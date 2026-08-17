@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('has title and hero section', async ({ page }) => {
+test('has title and hero section', async ({ page, isMobile }) => {
   await page.goto('/');
 
   // Expect a title "to contain" a substring.

@@ -20,28 +20,32 @@ export async function markAsWatched(titleId: string, rating?: number, review?: s
     })
   }
 
-  await prisma.userProgress.upsert({
-    where: {
-      userId_titleId: {
+  const existing = await prisma.userProgress.findFirst({
+    where: { userId, titleId, episodeId: null }
+  })
+
+  if (existing) {
+    await prisma.userProgress.update({
+      where: { id: existing.id },
+      data: {
+        status: 'COMPLETED',
+        rating,
+        review,
+        watchedAt: new Date(),
+      }
+    })
+  } else {
+    await prisma.userProgress.create({
+      data: {
         userId,
         titleId,
+        status: 'COMPLETED',
+        rating,
+        review,
+        watchedAt: new Date(),
       }
-    },
-    update: {
-      status: 'COMPLETED',
-      rating,
-      review,
-      watchedAt: new Date(),
-    },
-    create: {
-      userId,
-      titleId,
-      status: 'COMPLETED',
-      rating,
-      review,
-      watchedAt: new Date(),
-    }
-  })
+    })
+  }
 
   revalidatePath(`/title/${titleId}`)
   revalidatePath(`/`)
