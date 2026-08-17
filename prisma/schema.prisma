@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  progress  UserProgress[]
+  goals     Goal[]
+}
+
+model Title {
+  id             String     @id @default(uuid())
+  title          String
+  originalTitle  String?
+  type           String     // "MOVIE", "SERIES", "SPECIAL", "SHORT"
+  year           Int
+  releaseDate    DateTime?
+  universe       String
+  phase          String?
+  timelineOrder  Int?
+  importance     String     @default("OPCIONAL") // "ESSENCIAL", "MUITO_IMPORTANTE", "RECOMENDADO", "COMPLEMENTAR", "OPCIONAL"
+  
+  synopsis       String?
+  posterUrl      String?
+  bannerUrl      String?
+  trailerUrl     String?
+  director       String?
+  duration       Int?       // Total duration in minutes (or total for series)
+  episodesCount  Int?       // Only for SERIES
+  episodeDuration Int?      // Average episode duration in minutes
+  
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  seasons        Season[]
+  progress       UserProgress[]
+  characters     Character[] @relation("TitleToCharacter")
+  
+  relatedTo      Title[]    @relation("RelatedTitles")
+  relatedFrom    Title[]    @relation("RelatedTitles")
+}
+
+model Season {
+  id           String    @id @default(uuid())
+  titleId      String
+  seasonNumber Int
+  title        Title     @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  episodes     Episode[]
+
+  @@unique([titleId, seasonNumber])
+}
+
+model Episode {
+  id            String   @id @default(uuid())
+  seasonId      String
+  episodeNumber Int
+  title         String
+  duration      Int?     // minutes
+  synopsis      String?
+  thumbnailUrl  String?
+  
+  season        Season   @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  progress      UserProgress[]
+
+  @@unique([seasonId, episodeNumber])
+}
+
+model Character {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  imageUrl    String?
+  description String?
+  
+  titles      Title[]  @relation("TitleToCharacter")
+}
+
+model UserProgress {
+  id          String      @id @default(uuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  titleId     String?
+  title       Title?      @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  
+  episodeId   String?
+  episode     Episode?    @relation(fields: [episodeId], references: [id], onDelete: Cascade)
+  
+  status      String      @default("UNWATCHED") // "UNWATCHED", "WATCHING", "COMPLETED", "REWATCH", "IGNORED"
+  rating      Int?        // 1-5 stars
+  review      String?
+  watchedAt   DateTime?
+  
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Goal {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  targetDate  DateTime?
+  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}

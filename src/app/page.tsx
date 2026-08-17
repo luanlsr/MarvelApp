@@ -1,69 +1,106 @@
-import Image from "next/image";
+import { TimelineGrid } from '@/components/timeline-grid'
+import { getMarathonProgress } from '@/app/actions/marathon'
+import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button'
+import { Play, Info, CheckCircle } from 'lucide-react'
+import { ImageWithFallback } from '@/components/image-with-fallback'
+import { cn } from '@/lib/utils'
 
-export default function Home() {
+export default async function Home() {
+  const { nextRecommended } = await getMarathonProgress()
+  
+  // Use nextRecommended as the main hero if available, otherwise a default fallback
+  const heroTitle = nextRecommended ? nextRecommended.title : "Universo Marvel"
+  const heroSynopsis = nextRecommended 
+    ? nextRecommended.synopsis 
+    : "Acompanhe o Universo Cinematográfico da Marvel na ordem perfeita. Marque o que já assistiu e prepare-se para as próximas fases."
+  const heroImage = nextRecommended?.bannerUrl || nextRecommended?.posterUrl || "https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg" // Default Avengers backdrop
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="flex-1 pb-20">
+      {/* Streaming Hero Banner */}
+      <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col justify-end px-6 md:px-16 pb-24 md:pb-32">
+        {/* Background Image with Vignette/Gradient */}
+        <div className="absolute inset-0 -z-20">
+          <ImageWithFallback 
+            src={heroImage} 
+            alt={heroTitle} 
+            className="w-full h-full object-cover object-top" 
+          />
+        </div>
+        
+        {/* Gradients to blend with background */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#040714] via-[#040714]/60 to-transparent -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#040714] via-[#040714]/40 to-transparent -z-10" />
+        
+        <div className="max-w-3xl space-y-6 relative z-10 animate-in fade-in slide-in-from-bottom-10 duration-1000">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/40 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-widest mb-2 backdrop-blur-sm shadow-[0_0_20px_rgba(220,38,38,0.1)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            Contagem Regressiva: Doomsday (17 Dez 2026)
+          </div>
+          
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white drop-shadow-2xl">
+            {heroTitle}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          
+          <p className="text-lg md:text-xl text-zinc-300 max-w-2xl font-medium leading-relaxed drop-shadow-md line-clamp-3">
+            {heroSynopsis}
           </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+            <Link 
+              href={nextRecommended ? `/title/${nextRecommended.id}` : "/planejamento"}
+              className={cn(
+                buttonVariants({ size: "lg" }), 
+                "bg-white text-black hover:bg-zinc-200 rounded-[4px] px-8 font-bold text-base h-14 w-full sm:w-auto shadow-xl transition-transform hover:scale-105"
+              )}
+            >
+              <Play className="w-6 h-6 mr-3 fill-current" />
+              {nextRecommended ? "Assistir" : "Iniciar Jornada"}
+            </Link>
+            
+            {nextRecommended ? (
+              <Link 
+                href={`/actions/marathon/mark?id=${nextRecommended.id}`}
+                className={cn(
+                  buttonVariants({ size: "lg" }), 
+                  "bg-zinc-800/80 hover:bg-zinc-700/80 text-white rounded-[4px] px-8 font-bold text-base h-14 w-full sm:w-auto backdrop-blur-md transition-all"
+                )}
+              >
+                <CheckCircle className="w-5 h-5 mr-3" />
+                Marcar como Visto
+              </Link>
+            ) : (
+              <Link 
+                href="/estatisticas"
+                className={cn(
+                  buttonVariants({ size: "lg" }), 
+                  "bg-zinc-800/80 hover:bg-zinc-700/80 text-white rounded-[4px] px-8 font-bold text-base h-14 w-full sm:w-auto backdrop-blur-md transition-all"
+                )}
+              >
+                <Info className="w-5 h-5 mr-3" />
+                Mais Informações
+              </Link>
+            )}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      </section>
+
+      {/* Main Content Sections (Streaming Rows style) */}
+      <main className="px-6 md:px-16 -mt-10 relative z-20 space-y-20 max-w-[1600px] mx-auto">
+        
+        <section>
+          <div className="mb-6 flex items-center gap-4">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tight text-white drop-shadow-sm">
+              A Linha do Tempo <span className="text-red-600">Oficial</span>
+            </h2>
+            <div className="h-px flex-grow bg-white/5 hidden md:block" />
+          </div>
+          
+          <TimelineGrid />
+        </section>
+
       </main>
     </div>
-  );
+  )
 }

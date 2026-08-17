@@ -1,0 +1,1439 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: app.spec.ts >> has title and hero section
+- Location: tests\app.spec.ts:3:5
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: page.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('text=Filmes')
+    - locator resolved to <a href="/filmes" class="hover:text-white hover:scale-105 transition-all flex items-center gap-2 drop-shadow-md">…</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "M Tracker" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e5]: M
+      - text: Tracker
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "Iron Man" [ref=e9]
+      - generic [ref=e12]:
+        - generic [ref=e13]: "Contagem Regressiva: Doomsday (17 Dez 2026)"
+        - heading "Iron Man" [level=1] [ref=e15]
+        - paragraph [ref=e16]: After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.
+        - generic [ref=e17]:
+          - button [ref=e18]:
+            - link "Assistir" [ref=e19] [cursor=pointer]:
+              - /url: /title/e1d86a09-3e90-48ce-84d5-4293243f2ede
+          - button [ref=e20]:
+            - link "Marcar como Visto" [ref=e21] [cursor=pointer]:
+              - /url: /actions/marathon/mark?id=e1d86a09-3e90-48ce-84d5-4293243f2ede
+    - main [ref=e22]:
+      - generic [ref=e23]:
+        - heading "A Linha do Tempo Oficial" [level=2] [ref=e25]
+        - generic [ref=e26]:
+          - 'link "Iron Man FASE 1 #1 Iron Man 2008 MOVIE 126 min After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil. ESSENCIAL Ver Detalhes" [ref=e30] [cursor=pointer]':
+            - /url: /title/e1d86a09-3e90-48ce-84d5-4293243f2ede
+            - generic [ref=e31]:
+              - generic [ref=e32]:
+                - img "Iron Man" [ref=e33]
+                - generic [ref=e35]:
+                  - generic [ref=e36]: FASE 1
+                  - generic [ref=e37]: "#1"
+              - generic [ref=e38]:
+                - generic [ref=e39]:
+                  - heading "Iron Man" [level=3] [ref=e40]
+                  - generic [ref=e41]:
+                    - generic [ref=e42]: "2008"
+                    - generic [ref=e44]: MOVIE
+                    - generic [ref=e46]: 126 min
+                  - paragraph [ref=e50]: After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.
+                - generic [ref=e51]:
+                  - generic [ref=e52]: ESSENCIAL
+                  - generic [ref=e53]: Ver Detalhes
+          - 'link "The Incredible Hulk FASE 1 #2 The Incredible Hulk 2008 MOVIE 112 min Bruce Banner, a genetics researcher with a tragic past, suffers an accident that causes him to transform into a raging green monster when he gets angry. MUITO IMPORTANTE Ver Detalhes" [ref=e57] [cursor=pointer]':
+            - /url: /title/6f9118c9-f6dc-4c2c-869f-9f898c0fecf1
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - img "The Incredible Hulk" [ref=e60]
+                - generic [ref=e62]:
+                  - generic [ref=e63]: FASE 1
+                  - generic [ref=e64]: "#2"
+              - generic [ref=e65]:
+                - generic [ref=e66]:
+                  - heading "The Incredible Hulk" [level=3] [ref=e67]
+                  - generic [ref=e68]:
+                    - generic [ref=e69]: "2008"
+                    - generic [ref=e71]: MOVIE
+                    - generic [ref=e73]: 112 min
+                  - paragraph [ref=e77]: Bruce Banner, a genetics researcher with a tragic past, suffers an accident that causes him to transform into a raging green monster when he gets angry.
+                - generic [ref=e78]:
+                  - generic [ref=e79]: MUITO IMPORTANTE
+                  - generic [ref=e80]: Ver Detalhes
+          - 'link "Iron Man 2 FASE 1 #3 Iron Man 2 2010 MOVIE 124 min With the world now aware of his dual life as the armored superhero Iron Man, billionaire inventor Tony Stark faces pressure from the government, the press, and the public to share his technology with the military. RECOMENDADO Ver Detalhes" [ref=e84] [cursor=pointer]':
+            - /url: /title/846bbaf0-b7c7-47a6-ae0d-4fbd14fa88ef
+            - generic [ref=e85]:
+              - generic [ref=e86]:
+                - img "Iron Man 2" [ref=e87]
+                - generic [ref=e89]:
+                  - generic [ref=e90]: FASE 1
+                  - generic [ref=e91]: "#3"
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - heading "Iron Man 2" [level=3] [ref=e94]
+                  - generic [ref=e95]:
+                    - generic [ref=e96]: "2010"
+                    - generic [ref=e98]: MOVIE
+                    - generic [ref=e100]: 124 min
+                  - paragraph [ref=e104]: With the world now aware of his dual life as the armored superhero Iron Man, billionaire inventor Tony Stark faces pressure from the government, the press, and the public to share his technology with the military.
+                - generic [ref=e105]:
+                  - generic [ref=e106]: RECOMENDADO
+                  - generic [ref=e107]: Ver Detalhes
+          - 'link "Thor FASE 1 #4 Thor 2011 MOVIE 115 min The powerful but arrogant god Thor is cast out of Asgard to live amongst humans in Midgard (Earth), where he soon becomes one of their finest defenders. MUITO IMPORTANTE Ver Detalhes" [ref=e111] [cursor=pointer]':
+            - /url: /title/814a3834-717a-4da9-8f8d-43b3ffce11db
+            - generic [ref=e112]:
+              - generic [ref=e113]:
+                - img "Thor" [ref=e114]
+                - generic [ref=e116]:
+                  - generic [ref=e117]: FASE 1
+                  - generic [ref=e118]: "#4"
+              - generic [ref=e119]:
+                - generic [ref=e120]:
+                  - heading "Thor" [level=3] [ref=e121]
+                  - generic [ref=e122]:
+                    - generic [ref=e123]: "2011"
+                    - generic [ref=e125]: MOVIE
+                    - generic [ref=e127]: 115 min
+                  - paragraph [ref=e131]: The powerful but arrogant god Thor is cast out of Asgard to live amongst humans in Midgard (Earth), where he soon becomes one of their finest defenders.
+                - generic [ref=e132]:
+                  - generic [ref=e133]: MUITO IMPORTANTE
+                  - generic [ref=e134]: Ver Detalhes
+          - 'link "Captain America: The First Avenger FASE 1 #5 Captain America: The First Avenger 2011 MOVIE 124 min Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a \"Super-Soldier serum\". But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization. ESSENCIAL Ver Detalhes" [ref=e138] [cursor=pointer]':
+            - /url: /title/8d18ccaa-7a2f-417e-be65-b2f00cc456a7
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - 'img "Captain America: The First Avenger" [ref=e141]'
+                - generic [ref=e143]:
+                  - generic [ref=e144]: FASE 1
+                  - generic [ref=e145]: "#5"
+              - generic [ref=e146]:
+                - generic [ref=e147]:
+                  - 'heading "Captain America: The First Avenger" [level=3] [ref=e148]'
+                  - generic [ref=e149]:
+                    - generic [ref=e150]: "2011"
+                    - generic [ref=e152]: MOVIE
+                    - generic [ref=e154]: 124 min
+                  - paragraph [ref=e158]: Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a "Super-Soldier serum". But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization.
+                - generic [ref=e159]:
+                  - generic [ref=e160]: ESSENCIAL
+                  - generic [ref=e161]: Ver Detalhes
+          - 'link "The Avengers FASE 1 #6 The Avengers 2012 MOVIE 143 min Earth''s mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity. ESSENCIAL Ver Detalhes" [ref=e165] [cursor=pointer]':
+            - /url: /title/e119c4e3-2663-4db0-bb40-78b642f7b136
+            - generic [ref=e166]:
+              - generic [ref=e167]:
+                - img "The Avengers" [ref=e168]
+                - generic [ref=e170]:
+                  - generic [ref=e171]: FASE 1
+                  - generic [ref=e172]: "#6"
+              - generic [ref=e173]:
+                - generic [ref=e174]:
+                  - heading "The Avengers" [level=3] [ref=e175]
+                  - generic [ref=e176]:
+                    - generic [ref=e177]: "2012"
+                    - generic [ref=e179]: MOVIE
+                    - generic [ref=e181]: 143 min
+                  - paragraph [ref=e185]: Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.
+                - generic [ref=e186]:
+                  - generic [ref=e187]: ESSENCIAL
+                  - generic [ref=e188]: Ver Detalhes
+          - 'link "Iron Man 3 FASE 2 #7 Iron Man 3 2013 MOVIE RECOMENDADO Ver Detalhes" [ref=e192] [cursor=pointer]':
+            - /url: /title/f13714d3-3f16-4d42-b765-fa9024cd8877
+            - generic [ref=e193]:
+              - generic [ref=e194]:
+                - img "Iron Man 3" [ref=e195]
+                - generic [ref=e197]:
+                  - generic [ref=e198]: FASE 2
+                  - generic [ref=e199]: "#7"
+              - generic [ref=e200]:
+                - generic [ref=e201]:
+                  - heading "Iron Man 3" [level=3] [ref=e202]
+                  - generic [ref=e203]:
+                    - generic [ref=e204]: "2013"
+                    - generic [ref=e206]: MOVIE
+                  - paragraph
+                - generic [ref=e207]:
+                  - generic [ref=e208]: RECOMENDADO
+                  - generic [ref=e209]: Ver Detalhes
+          - 'link "Thor: The Dark World FASE 2 #8 Thor: The Dark World 2013 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e213] [cursor=pointer]':
+            - /url: /title/181dbf12-0ae1-4b88-a2d4-875f541efef0
+            - generic [ref=e214]:
+              - generic [ref=e215]:
+                - 'img "Thor: The Dark World" [ref=e216]'
+                - generic [ref=e218]:
+                  - generic [ref=e219]: FASE 2
+                  - generic [ref=e220]: "#8"
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - 'heading "Thor: The Dark World" [level=3] [ref=e223]'
+                  - generic [ref=e224]:
+                    - generic [ref=e225]: "2013"
+                    - generic [ref=e227]: MOVIE
+                  - paragraph
+                - generic [ref=e228]:
+                  - generic [ref=e229]: COMPLEMENTAR
+                  - generic [ref=e230]: Ver Detalhes
+          - 'link "Captain America: The Winter Soldier FASE 2 #9 Captain America: The Winter Soldier 2014 MOVIE ESSENCIAL Ver Detalhes" [ref=e234] [cursor=pointer]':
+            - /url: /title/1291b703-e3ef-4667-9c5c-be5504ed15de
+            - generic [ref=e235]:
+              - generic [ref=e236]:
+                - 'img "Captain America: The Winter Soldier" [ref=e237]'
+                - generic [ref=e239]:
+                  - generic [ref=e240]: FASE 2
+                  - generic [ref=e241]: "#9"
+              - generic [ref=e242]:
+                - generic [ref=e243]:
+                  - 'heading "Captain America: The Winter Soldier" [level=3] [ref=e244]'
+                  - generic [ref=e245]:
+                    - generic [ref=e246]: "2014"
+                    - generic [ref=e248]: MOVIE
+                  - paragraph
+                - generic [ref=e249]:
+                  - generic [ref=e250]: ESSENCIAL
+                  - generic [ref=e251]: Ver Detalhes
+          - 'link "Guardians of the Galaxy FASE 2 #10 Guardians of the Galaxy 2014 MOVIE ESSENCIAL Ver Detalhes" [ref=e255] [cursor=pointer]':
+            - /url: /title/65125b76-1bec-41fc-80be-6f28b8e9b39b
+            - generic [ref=e256]:
+              - generic [ref=e257]:
+                - img "Guardians of the Galaxy" [ref=e258]
+                - generic [ref=e260]:
+                  - generic [ref=e261]: FASE 2
+                  - generic [ref=e262]: "#10"
+              - generic [ref=e263]:
+                - generic [ref=e264]:
+                  - heading "Guardians of the Galaxy" [level=3] [ref=e265]
+                  - generic [ref=e266]:
+                    - generic [ref=e267]: "2014"
+                    - generic [ref=e269]: MOVIE
+                  - paragraph
+                - generic [ref=e270]:
+                  - generic [ref=e271]: ESSENCIAL
+                  - generic [ref=e272]: Ver Detalhes
+          - 'link "Avengers: Age of Ultron FASE 2 #11 Avengers: Age of Ultron 2015 MOVIE ESSENCIAL Ver Detalhes" [ref=e276] [cursor=pointer]':
+            - /url: /title/12ddf3e9-27a6-4a3a-86f7-12f784faa2d5
+            - generic [ref=e277]:
+              - generic [ref=e278]:
+                - 'img "Avengers: Age of Ultron" [ref=e279]'
+                - generic [ref=e281]:
+                  - generic [ref=e282]: FASE 2
+                  - generic [ref=e283]: "#11"
+              - generic [ref=e284]:
+                - generic [ref=e285]:
+                  - 'heading "Avengers: Age of Ultron" [level=3] [ref=e286]'
+                  - generic [ref=e287]:
+                    - generic [ref=e288]: "2015"
+                    - generic [ref=e290]: MOVIE
+                  - paragraph
+                - generic [ref=e291]:
+                  - generic [ref=e292]: ESSENCIAL
+                  - generic [ref=e293]: Ver Detalhes
+          - 'link "Ant-Man FASE 2 #12 Ant-Man 2015 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e297] [cursor=pointer]':
+            - /url: /title/4049bcb9-d40f-4bc6-9125-28788a051cf4
+            - generic [ref=e298]:
+              - generic [ref=e299]:
+                - img "Ant-Man" [ref=e300]
+                - generic [ref=e302]:
+                  - generic [ref=e303]: FASE 2
+                  - generic [ref=e304]: "#12"
+              - generic [ref=e305]:
+                - generic [ref=e306]:
+                  - heading "Ant-Man" [level=3] [ref=e307]
+                  - generic [ref=e308]:
+                    - generic [ref=e309]: "2015"
+                    - generic [ref=e311]: MOVIE
+                  - paragraph
+                - generic [ref=e312]:
+                  - generic [ref=e313]: MUITO IMPORTANTE
+                  - generic [ref=e314]: Ver Detalhes
+          - 'link "Captain America: Civil War FASE 3 #13 Captain America: Civil War 2016 MOVIE ESSENCIAL Ver Detalhes" [ref=e318] [cursor=pointer]':
+            - /url: /title/7f1d569d-9e46-49a5-8f7d-63752d724e5a
+            - generic [ref=e319]:
+              - generic [ref=e320]:
+                - 'img "Captain America: Civil War" [ref=e321]'
+                - generic [ref=e323]:
+                  - generic [ref=e324]: FASE 3
+                  - generic [ref=e325]: "#13"
+              - generic [ref=e326]:
+                - generic [ref=e327]:
+                  - 'heading "Captain America: Civil War" [level=3] [ref=e328]'
+                  - generic [ref=e329]:
+                    - generic [ref=e330]: "2016"
+                    - generic [ref=e332]: MOVIE
+                  - paragraph
+                - generic [ref=e333]:
+                  - generic [ref=e334]: ESSENCIAL
+                  - generic [ref=e335]: Ver Detalhes
+          - 'link "Doctor Strange FASE 3 #14 Doctor Strange 2016 MOVIE ESSENCIAL Ver Detalhes" [ref=e339] [cursor=pointer]':
+            - /url: /title/aa844180-3a92-410d-95e2-14961ab0d6b4
+            - generic [ref=e340]:
+              - generic [ref=e341]:
+                - img "Doctor Strange" [ref=e342]
+                - generic [ref=e344]:
+                  - generic [ref=e345]: FASE 3
+                  - generic [ref=e346]: "#14"
+              - generic [ref=e347]:
+                - generic [ref=e348]:
+                  - heading "Doctor Strange" [level=3] [ref=e349]
+                  - generic [ref=e350]:
+                    - generic [ref=e351]: "2016"
+                    - generic [ref=e353]: MOVIE
+                  - paragraph
+                - generic [ref=e354]:
+                  - generic [ref=e355]: ESSENCIAL
+                  - generic [ref=e356]: Ver Detalhes
+          - 'link "Guardians of the Galaxy Vol. 2 FASE 3 #15 Guardians of the Galaxy Vol. 2 2017 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e360] [cursor=pointer]':
+            - /url: /title/e3dfbe07-f7d8-43ab-a533-7aa03f85c86c
+            - generic [ref=e361]:
+              - generic [ref=e362]:
+                - img "Guardians of the Galaxy Vol. 2" [ref=e363]
+                - generic [ref=e365]:
+                  - generic [ref=e366]: FASE 3
+                  - generic [ref=e367]: "#15"
+              - generic [ref=e368]:
+                - generic [ref=e369]:
+                  - heading "Guardians of the Galaxy Vol. 2" [level=3] [ref=e370]
+                  - generic [ref=e371]:
+                    - generic [ref=e372]: "2017"
+                    - generic [ref=e374]: MOVIE
+                  - paragraph
+                - generic [ref=e375]:
+                  - generic [ref=e376]: MUITO IMPORTANTE
+                  - generic [ref=e377]: Ver Detalhes
+          - 'link "Spider-Man: Homecoming FASE 3 #16 Spider-Man: Homecoming 2017 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e381] [cursor=pointer]':
+            - /url: /title/9e97bec6-a932-4863-9a32-598b1eb8cebe
+            - generic [ref=e382]:
+              - generic [ref=e383]:
+                - 'img "Spider-Man: Homecoming" [ref=e384]'
+                - generic [ref=e386]:
+                  - generic [ref=e387]: FASE 3
+                  - generic [ref=e388]: "#16"
+              - generic [ref=e389]:
+                - generic [ref=e390]:
+                  - 'heading "Spider-Man: Homecoming" [level=3] [ref=e391]'
+                  - generic [ref=e392]:
+                    - generic [ref=e393]: "2017"
+                    - generic [ref=e395]: MOVIE
+                  - paragraph
+                - generic [ref=e396]:
+                  - generic [ref=e397]: MUITO IMPORTANTE
+                  - generic [ref=e398]: Ver Detalhes
+          - 'link "Thor: Ragnarok FASE 3 #17 Thor: Ragnarok 2017 MOVIE ESSENCIAL Ver Detalhes" [ref=e402] [cursor=pointer]':
+            - /url: /title/072b603c-cc3c-4afd-b9f5-c90cc4e3cdc4
+            - generic [ref=e403]:
+              - generic [ref=e404]:
+                - 'img "Thor: Ragnarok" [ref=e405]'
+                - generic [ref=e407]:
+                  - generic [ref=e408]: FASE 3
+                  - generic [ref=e409]: "#17"
+              - generic [ref=e410]:
+                - generic [ref=e411]:
+                  - 'heading "Thor: Ragnarok" [level=3] [ref=e412]'
+                  - generic [ref=e413]:
+                    - generic [ref=e414]: "2017"
+                    - generic [ref=e416]: MOVIE
+                  - paragraph
+                - generic [ref=e417]:
+                  - generic [ref=e418]: ESSENCIAL
+                  - generic [ref=e419]: Ver Detalhes
+          - 'link "Black Panther FASE 3 #18 Black Panther 2018 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e423] [cursor=pointer]':
+            - /url: /title/7c400dda-c2f2-422f-a50a-031d9be49401
+            - generic [ref=e424]:
+              - generic [ref=e425]:
+                - img "Black Panther" [ref=e426]
+                - generic [ref=e428]:
+                  - generic [ref=e429]: FASE 3
+                  - generic [ref=e430]: "#18"
+              - generic [ref=e431]:
+                - generic [ref=e432]:
+                  - heading "Black Panther" [level=3] [ref=e433]
+                  - generic [ref=e434]:
+                    - generic [ref=e435]: "2018"
+                    - generic [ref=e437]: MOVIE
+                  - paragraph
+                - generic [ref=e438]:
+                  - generic [ref=e439]: MUITO IMPORTANTE
+                  - generic [ref=e440]: Ver Detalhes
+          - 'link "Avengers: Infinity War FASE 3 #19 Avengers: Infinity War 2018 MOVIE ESSENCIAL Ver Detalhes" [ref=e444] [cursor=pointer]':
+            - /url: /title/2b2db07b-3d1c-4d0e-8658-7c0bb6a2bbb8
+            - generic [ref=e445]:
+              - generic [ref=e446]:
+                - 'img "Avengers: Infinity War" [ref=e447]'
+                - generic [ref=e449]:
+                  - generic [ref=e450]: FASE 3
+                  - generic [ref=e451]: "#19"
+              - generic [ref=e452]:
+                - generic [ref=e453]:
+                  - 'heading "Avengers: Infinity War" [level=3] [ref=e454]'
+                  - generic [ref=e455]:
+                    - generic [ref=e456]: "2018"
+                    - generic [ref=e458]: MOVIE
+                  - paragraph
+                - generic [ref=e459]:
+                  - generic [ref=e460]: ESSENCIAL
+                  - generic [ref=e461]: Ver Detalhes
+          - 'link "Ant-Man and the Wasp FASE 3 #20 Ant-Man and the Wasp 2018 MOVIE RECOMENDADO Ver Detalhes" [ref=e465] [cursor=pointer]':
+            - /url: /title/ed159a6c-5797-4782-8e27-d88d7031cf76
+            - generic [ref=e466]:
+              - generic [ref=e467]:
+                - img "Ant-Man and the Wasp" [ref=e468]
+                - generic [ref=e470]:
+                  - generic [ref=e471]: FASE 3
+                  - generic [ref=e472]: "#20"
+              - generic [ref=e473]:
+                - generic [ref=e474]:
+                  - heading "Ant-Man and the Wasp" [level=3] [ref=e475]
+                  - generic [ref=e476]:
+                    - generic [ref=e477]: "2018"
+                    - generic [ref=e479]: MOVIE
+                  - paragraph
+                - generic [ref=e480]:
+                  - generic [ref=e481]: RECOMENDADO
+                  - generic [ref=e482]: Ver Detalhes
+          - 'link "Captain Marvel FASE 3 #21 Captain Marvel 2019 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e486] [cursor=pointer]':
+            - /url: /title/6a715ad8-1060-41b0-92d7-6d7b934604d4
+            - generic [ref=e487]:
+              - generic [ref=e488]:
+                - img "Captain Marvel" [ref=e489]
+                - generic [ref=e491]:
+                  - generic [ref=e492]: FASE 3
+                  - generic [ref=e493]: "#21"
+              - generic [ref=e494]:
+                - generic [ref=e495]:
+                  - heading "Captain Marvel" [level=3] [ref=e496]
+                  - generic [ref=e497]:
+                    - generic [ref=e498]: "2019"
+                    - generic [ref=e500]: MOVIE
+                  - paragraph
+                - generic [ref=e501]:
+                  - generic [ref=e502]: MUITO IMPORTANTE
+                  - generic [ref=e503]: Ver Detalhes
+          - 'link "Avengers: Endgame FASE 3 #22 Avengers: Endgame 2019 MOVIE ESSENCIAL Ver Detalhes" [ref=e507] [cursor=pointer]':
+            - /url: /title/02406501-4b33-4464-9c1a-b07637cf0e22
+            - generic [ref=e508]:
+              - generic [ref=e509]:
+                - 'img "Avengers: Endgame" [ref=e510]'
+                - generic [ref=e512]:
+                  - generic [ref=e513]: FASE 3
+                  - generic [ref=e514]: "#22"
+              - generic [ref=e515]:
+                - generic [ref=e516]:
+                  - 'heading "Avengers: Endgame" [level=3] [ref=e517]'
+                  - generic [ref=e518]:
+                    - generic [ref=e519]: "2019"
+                    - generic [ref=e521]: MOVIE
+                  - paragraph
+                - generic [ref=e522]:
+                  - generic [ref=e523]: ESSENCIAL
+                  - generic [ref=e524]: Ver Detalhes
+          - 'link "Spider-Man: Far From Home FASE 3 #23 Spider-Man: Far From Home 2019 MOVIE RECOMENDADO Ver Detalhes" [ref=e528] [cursor=pointer]':
+            - /url: /title/6eb46fe0-ed11-4205-a434-10cb4b8a736b
+            - generic [ref=e529]:
+              - generic [ref=e530]:
+                - 'img "Spider-Man: Far From Home" [ref=e531]'
+                - generic [ref=e533]:
+                  - generic [ref=e534]: FASE 3
+                  - generic [ref=e535]: "#23"
+              - generic [ref=e536]:
+                - generic [ref=e537]:
+                  - 'heading "Spider-Man: Far From Home" [level=3] [ref=e538]'
+                  - generic [ref=e539]:
+                    - generic [ref=e540]: "2019"
+                    - generic [ref=e542]: MOVIE
+                  - paragraph
+                - generic [ref=e543]:
+                  - generic [ref=e544]: RECOMENDADO
+                  - generic [ref=e545]: Ver Detalhes
+          - 'link "WandaVision FASE 4 #24 WandaVision 2021 SERIES ESSENCIAL Ver Detalhes" [ref=e549] [cursor=pointer]':
+            - /url: /title/000c3063-050c-4f0c-95e1-f6d9fd436d52
+            - generic [ref=e550]:
+              - generic [ref=e551]:
+                - img "WandaVision" [ref=e552]
+                - generic [ref=e554]:
+                  - generic [ref=e555]: FASE 4
+                  - generic [ref=e556]: "#24"
+              - generic [ref=e557]:
+                - generic [ref=e558]:
+                  - heading "WandaVision" [level=3] [ref=e559]
+                  - generic [ref=e560]:
+                    - generic [ref=e561]: "2021"
+                    - generic [ref=e563]: SERIES
+                  - paragraph
+                - generic [ref=e564]:
+                  - generic [ref=e565]: ESSENCIAL
+                  - generic [ref=e566]: Ver Detalhes
+          - 'link "The Falcon and the Winter Soldier FASE 4 #25 The Falcon and the Winter Soldier 2021 SERIES RECOMENDADO Ver Detalhes" [ref=e570] [cursor=pointer]':
+            - /url: /title/8164eda4-7809-471e-8f29-76f23af672c7
+            - generic [ref=e571]:
+              - generic [ref=e572]:
+                - img "The Falcon and the Winter Soldier" [ref=e573]
+                - generic [ref=e575]:
+                  - generic [ref=e576]: FASE 4
+                  - generic [ref=e577]: "#25"
+              - generic [ref=e578]:
+                - generic [ref=e579]:
+                  - heading "The Falcon and the Winter Soldier" [level=3] [ref=e580]
+                  - generic [ref=e581]:
+                    - generic [ref=e582]: "2021"
+                    - generic [ref=e584]: SERIES
+                  - paragraph
+                - generic [ref=e585]:
+                  - generic [ref=e586]: RECOMENDADO
+                  - generic [ref=e587]: Ver Detalhes
+          - 'link "Loki FASE 4 #26 Loki 2021 SERIES ESSENCIAL Ver Detalhes" [ref=e591] [cursor=pointer]':
+            - /url: /title/9c2fd169-aa53-4646-9442-6d79c025f740
+            - generic [ref=e592]:
+              - generic [ref=e593]:
+                - img "Loki" [ref=e594]
+                - generic [ref=e596]:
+                  - generic [ref=e597]: FASE 4
+                  - generic [ref=e598]: "#26"
+              - generic [ref=e599]:
+                - generic [ref=e600]:
+                  - heading "Loki" [level=3] [ref=e601]
+                  - generic [ref=e602]:
+                    - generic [ref=e603]: "2021"
+                    - generic [ref=e605]: SERIES
+                  - paragraph
+                - generic [ref=e606]:
+                  - generic [ref=e607]: ESSENCIAL
+                  - generic [ref=e608]: Ver Detalhes
+          - 'link "Black Widow FASE 4 #27 Black Widow 2021 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e612] [cursor=pointer]':
+            - /url: /title/2c8521b4-c8d2-426b-8267-f23718ee5570
+            - generic [ref=e613]:
+              - generic [ref=e614]:
+                - img "Black Widow" [ref=e615]
+                - generic [ref=e617]:
+                  - generic [ref=e618]: FASE 4
+                  - generic [ref=e619]: "#27"
+              - generic [ref=e620]:
+                - generic [ref=e621]:
+                  - heading "Black Widow" [level=3] [ref=e622]
+                  - generic [ref=e623]:
+                    - generic [ref=e624]: "2021"
+                    - generic [ref=e626]: MOVIE
+                  - paragraph
+                - generic [ref=e627]:
+                  - generic [ref=e628]: COMPLEMENTAR
+                  - generic [ref=e629]: Ver Detalhes
+          - 'link "What If...? FASE 4 #28 What If...? 2021 SERIES COMPLEMENTAR Ver Detalhes" [ref=e633] [cursor=pointer]':
+            - /url: /title/8d773ebf-e405-4762-b762-ca6575675d01
+            - generic [ref=e634]:
+              - generic [ref=e635]:
+                - img "What If...?" [ref=e636]
+                - generic [ref=e638]:
+                  - generic [ref=e639]: FASE 4
+                  - generic [ref=e640]: "#28"
+              - generic [ref=e641]:
+                - generic [ref=e642]:
+                  - heading "What If...?" [level=3] [ref=e643]
+                  - generic [ref=e644]:
+                    - generic [ref=e645]: "2021"
+                    - generic [ref=e647]: SERIES
+                  - paragraph
+                - generic [ref=e648]:
+                  - generic [ref=e649]: COMPLEMENTAR
+                  - generic [ref=e650]: Ver Detalhes
+          - 'link "Shang-Chi and the Legend of the Ten Rings FASE 4 #29 Shang-Chi and the Legend of the Ten Rings 2021 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e654] [cursor=pointer]':
+            - /url: /title/c49fe70d-c371-4b50-a97e-7303473fd360
+            - generic [ref=e655]:
+              - generic [ref=e656]:
+                - img "Shang-Chi and the Legend of the Ten Rings" [ref=e657]
+                - generic [ref=e659]:
+                  - generic [ref=e660]: FASE 4
+                  - generic [ref=e661]: "#29"
+              - generic [ref=e662]:
+                - generic [ref=e663]:
+                  - heading "Shang-Chi and the Legend of the Ten Rings" [level=3] [ref=e664]
+                  - generic [ref=e665]:
+                    - generic [ref=e666]: "2021"
+                    - generic [ref=e668]: MOVIE
+                  - paragraph
+                - generic [ref=e669]:
+                  - generic [ref=e670]: MUITO IMPORTANTE
+                  - generic [ref=e671]: Ver Detalhes
+          - 'link "Eternals FASE 4 #30 Eternals 2021 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e675] [cursor=pointer]':
+            - /url: /title/afdfa05f-da9a-47bb-bf81-d04b0556b3da
+            - generic [ref=e676]:
+              - generic [ref=e677]:
+                - img "Eternals" [ref=e678]
+                - generic [ref=e680]:
+                  - generic [ref=e681]: FASE 4
+                  - generic [ref=e682]: "#30"
+              - generic [ref=e683]:
+                - generic [ref=e684]:
+                  - heading "Eternals" [level=3] [ref=e685]
+                  - generic [ref=e686]:
+                    - generic [ref=e687]: "2021"
+                    - generic [ref=e689]: MOVIE
+                  - paragraph
+                - generic [ref=e690]:
+                  - generic [ref=e691]: COMPLEMENTAR
+                  - generic [ref=e692]: Ver Detalhes
+          - 'link "Hawkeye FASE 4 #31 Hawkeye 2021 SERIES RECOMENDADO Ver Detalhes" [ref=e696] [cursor=pointer]':
+            - /url: /title/ee2ef5e7-495c-497a-ac2b-5d01e17eb3ad
+            - generic [ref=e697]:
+              - generic [ref=e698]:
+                - img "Hawkeye" [ref=e699]
+                - generic [ref=e701]:
+                  - generic [ref=e702]: FASE 4
+                  - generic [ref=e703]: "#31"
+              - generic [ref=e704]:
+                - generic [ref=e705]:
+                  - heading "Hawkeye" [level=3] [ref=e706]
+                  - generic [ref=e707]:
+                    - generic [ref=e708]: "2021"
+                    - generic [ref=e710]: SERIES
+                  - paragraph
+                - generic [ref=e711]:
+                  - generic [ref=e712]: RECOMENDADO
+                  - generic [ref=e713]: Ver Detalhes
+          - 'link "Spider-Man: No Way Home FASE 4 #32 Spider-Man: No Way Home 2021 MOVIE ESSENCIAL Ver Detalhes" [ref=e717] [cursor=pointer]':
+            - /url: /title/5c0fcb97-cd6d-466b-94c2-912401c112bd
+            - generic [ref=e718]:
+              - generic [ref=e719]:
+                - 'img "Spider-Man: No Way Home" [ref=e720]'
+                - generic [ref=e722]:
+                  - generic [ref=e723]: FASE 4
+                  - generic [ref=e724]: "#32"
+              - generic [ref=e725]:
+                - generic [ref=e726]:
+                  - 'heading "Spider-Man: No Way Home" [level=3] [ref=e727]'
+                  - generic [ref=e728]:
+                    - generic [ref=e729]: "2021"
+                    - generic [ref=e731]: MOVIE
+                  - paragraph
+                - generic [ref=e732]:
+                  - generic [ref=e733]: ESSENCIAL
+                  - generic [ref=e734]: Ver Detalhes
+          - 'link "Moon Knight FASE 4 #33 Moon Knight 2022 SERIES COMPLEMENTAR Ver Detalhes" [ref=e738] [cursor=pointer]':
+            - /url: /title/a825819e-c9b5-4b8c-86a3-a22e39f1068a
+            - generic [ref=e739]:
+              - generic [ref=e740]:
+                - img "Moon Knight" [ref=e741]
+                - generic [ref=e743]:
+                  - generic [ref=e744]: FASE 4
+                  - generic [ref=e745]: "#33"
+              - generic [ref=e746]:
+                - generic [ref=e747]:
+                  - heading "Moon Knight" [level=3] [ref=e748]
+                  - generic [ref=e749]:
+                    - generic [ref=e750]: "2022"
+                    - generic [ref=e752]: SERIES
+                  - paragraph
+                - generic [ref=e753]:
+                  - generic [ref=e754]: COMPLEMENTAR
+                  - generic [ref=e755]: Ver Detalhes
+          - 'link "Doctor Strange in the Multiverse of Madness FASE 4 #34 Doctor Strange in the Multiverse of Madness 2022 MOVIE ESSENCIAL Ver Detalhes" [ref=e759] [cursor=pointer]':
+            - /url: /title/1404500a-3622-48dc-a4b5-63c2fa543800
+            - generic [ref=e760]:
+              - generic [ref=e761]:
+                - img "Doctor Strange in the Multiverse of Madness" [ref=e762]
+                - generic [ref=e764]:
+                  - generic [ref=e765]: FASE 4
+                  - generic [ref=e766]: "#34"
+              - generic [ref=e767]:
+                - generic [ref=e768]:
+                  - heading "Doctor Strange in the Multiverse of Madness" [level=3] [ref=e769]
+                  - generic [ref=e770]:
+                    - generic [ref=e771]: "2022"
+                    - generic [ref=e773]: MOVIE
+                  - paragraph
+                - generic [ref=e774]:
+                  - generic [ref=e775]: ESSENCIAL
+                  - generic [ref=e776]: Ver Detalhes
+          - 'link "Ms. Marvel FASE 4 #35 Ms. Marvel 2022 SERIES MUITO IMPORTANTE Ver Detalhes" [ref=e780] [cursor=pointer]':
+            - /url: /title/9062d81a-1a19-4e59-a171-6d0e47597671
+            - generic [ref=e781]:
+              - generic [ref=e782]:
+                - img "Ms. Marvel" [ref=e783]
+                - generic [ref=e785]:
+                  - generic [ref=e786]: FASE 4
+                  - generic [ref=e787]: "#35"
+              - generic [ref=e788]:
+                - generic [ref=e789]:
+                  - heading "Ms. Marvel" [level=3] [ref=e790]
+                  - generic [ref=e791]:
+                    - generic [ref=e792]: "2022"
+                    - generic [ref=e794]: SERIES
+                  - paragraph
+                - generic [ref=e795]:
+                  - generic [ref=e796]: MUITO IMPORTANTE
+                  - generic [ref=e797]: Ver Detalhes
+          - 'link "Thor: Love and Thunder FASE 4 #36 Thor: Love and Thunder 2022 MOVIE RECOMENDADO Ver Detalhes" [ref=e801] [cursor=pointer]':
+            - /url: /title/97a73dab-c393-4ee1-95d4-7c6c7b80b823
+            - generic [ref=e802]:
+              - generic [ref=e803]:
+                - 'img "Thor: Love and Thunder" [ref=e804]'
+                - generic [ref=e806]:
+                  - generic [ref=e807]: FASE 4
+                  - generic [ref=e808]: "#36"
+              - generic [ref=e809]:
+                - generic [ref=e810]:
+                  - 'heading "Thor: Love and Thunder" [level=3] [ref=e811]'
+                  - generic [ref=e812]:
+                    - generic [ref=e813]: "2022"
+                    - generic [ref=e815]: MOVIE
+                  - paragraph
+                - generic [ref=e816]:
+                  - generic [ref=e817]: RECOMENDADO
+                  - generic [ref=e818]: Ver Detalhes
+          - 'link "She-Hulk: Attorney at Law FASE 4 #37 She-Hulk: Attorney at Law 2022 SERIES RECOMENDADO Ver Detalhes" [ref=e822] [cursor=pointer]':
+            - /url: /title/16bf0a50-1f75-4d42-b364-4f5978be168b
+            - generic [ref=e823]:
+              - generic [ref=e824]:
+                - 'img "She-Hulk: Attorney at Law" [ref=e825]'
+                - generic [ref=e827]:
+                  - generic [ref=e828]: FASE 4
+                  - generic [ref=e829]: "#37"
+              - generic [ref=e830]:
+                - generic [ref=e831]:
+                  - 'heading "She-Hulk: Attorney at Law" [level=3] [ref=e832]'
+                  - generic [ref=e833]:
+                    - generic [ref=e834]: "2022"
+                    - generic [ref=e836]: SERIES
+                  - paragraph
+                - generic [ref=e837]:
+                  - generic [ref=e838]: RECOMENDADO
+                  - generic [ref=e839]: Ver Detalhes
+          - 'link "Werewolf by Night FASE 4 #38 Werewolf by Night 2022 SPECIAL OPCIONAL Ver Detalhes" [ref=e843] [cursor=pointer]':
+            - /url: /title/601e208c-ff15-4da6-8428-483f9bcfeaa2
+            - generic [ref=e844]:
+              - generic [ref=e845]:
+                - img "Werewolf by Night" [ref=e846]
+                - generic [ref=e848]:
+                  - generic [ref=e849]: FASE 4
+                  - generic [ref=e850]: "#38"
+              - generic [ref=e851]:
+                - generic [ref=e852]:
+                  - heading "Werewolf by Night" [level=3] [ref=e853]
+                  - generic [ref=e854]:
+                    - generic [ref=e855]: "2022"
+                    - generic [ref=e857]: SPECIAL
+                  - paragraph
+                - generic [ref=e858]:
+                  - generic [ref=e859]: OPCIONAL
+                  - generic [ref=e860]: Ver Detalhes
+          - 'link "Black Panther: Wakanda Forever FASE 4 #39 Black Panther: Wakanda Forever 2022 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e864] [cursor=pointer]':
+            - /url: /title/3bb1ba34-a82f-47b1-aea5-848486cb2783
+            - generic [ref=e865]:
+              - generic [ref=e866]:
+                - 'img "Black Panther: Wakanda Forever" [ref=e867]'
+                - generic [ref=e869]:
+                  - generic [ref=e870]: FASE 4
+                  - generic [ref=e871]: "#39"
+              - generic [ref=e872]:
+                - generic [ref=e873]:
+                  - 'heading "Black Panther: Wakanda Forever" [level=3] [ref=e874]'
+                  - generic [ref=e875]:
+                    - generic [ref=e876]: "2022"
+                    - generic [ref=e878]: MOVIE
+                  - paragraph
+                - generic [ref=e879]:
+                  - generic [ref=e880]: MUITO IMPORTANTE
+                  - generic [ref=e881]: Ver Detalhes
+          - 'link "The Guardians of the Galaxy Holiday Special FASE 4 #40 The Guardians of the Galaxy Holiday Special 2022 SPECIAL OPCIONAL Ver Detalhes" [ref=e885] [cursor=pointer]':
+            - /url: /title/c3ac3590-c653-4a2e-8a6c-036f7e81a8cf
+            - generic [ref=e886]:
+              - generic [ref=e887]:
+                - img "The Guardians of the Galaxy Holiday Special" [ref=e888]
+                - generic [ref=e890]:
+                  - generic [ref=e891]: FASE 4
+                  - generic [ref=e892]: "#40"
+              - generic [ref=e893]:
+                - generic [ref=e894]:
+                  - heading "The Guardians of the Galaxy Holiday Special" [level=3] [ref=e895]
+                  - generic [ref=e896]:
+                    - generic [ref=e897]: "2022"
+                    - generic [ref=e899]: SPECIAL
+                  - paragraph
+                - generic [ref=e900]:
+                  - generic [ref=e901]: OPCIONAL
+                  - generic [ref=e902]: Ver Detalhes
+          - 'link "Ant-Man and the Wasp: Quantumania FASE 5 #41 Ant-Man and the Wasp: Quantumania 2023 MOVIE ESSENCIAL Ver Detalhes" [ref=e906] [cursor=pointer]':
+            - /url: /title/3a2c82f4-0247-4dcd-9865-1acfa342834c
+            - generic [ref=e907]:
+              - generic [ref=e908]:
+                - 'img "Ant-Man and the Wasp: Quantumania" [ref=e909]'
+                - generic [ref=e911]:
+                  - generic [ref=e912]: FASE 5
+                  - generic [ref=e913]: "#41"
+              - generic [ref=e914]:
+                - generic [ref=e915]:
+                  - 'heading "Ant-Man and the Wasp: Quantumania" [level=3] [ref=e916]'
+                  - generic [ref=e917]:
+                    - generic [ref=e918]: "2023"
+                    - generic [ref=e920]: MOVIE
+                  - paragraph
+                - generic [ref=e921]:
+                  - generic [ref=e922]: ESSENCIAL
+                  - generic [ref=e923]: Ver Detalhes
+          - 'link "Guardians of the Galaxy Vol. 3 FASE 5 #42 Guardians of the Galaxy Vol. 3 2023 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e927] [cursor=pointer]':
+            - /url: /title/091de817-7398-49e4-a8d8-919e4dc9bcb9
+            - generic [ref=e928]:
+              - generic [ref=e929]:
+                - img "Guardians of the Galaxy Vol. 3" [ref=e930]
+                - generic [ref=e932]:
+                  - generic [ref=e933]: FASE 5
+                  - generic [ref=e934]: "#42"
+              - generic [ref=e935]:
+                - generic [ref=e936]:
+                  - heading "Guardians of the Galaxy Vol. 3" [level=3] [ref=e937]
+                  - generic [ref=e938]:
+                    - generic [ref=e939]: "2023"
+                    - generic [ref=e941]: MOVIE
+                  - paragraph
+                - generic [ref=e942]:
+                  - generic [ref=e943]: MUITO IMPORTANTE
+                  - generic [ref=e944]: Ver Detalhes
+          - 'link "Secret Invasion FASE 5 #43 Secret Invasion 2023 SERIES RECOMENDADO Ver Detalhes" [ref=e948] [cursor=pointer]':
+            - /url: /title/21833d6c-b11d-4224-80a3-29fa13cb45fd
+            - generic [ref=e949]:
+              - generic [ref=e950]:
+                - img "Secret Invasion" [ref=e951]
+                - generic [ref=e953]:
+                  - generic [ref=e954]: FASE 5
+                  - generic [ref=e955]: "#43"
+              - generic [ref=e956]:
+                - generic [ref=e957]:
+                  - heading "Secret Invasion" [level=3] [ref=e958]
+                  - generic [ref=e959]:
+                    - generic [ref=e960]: "2023"
+                    - generic [ref=e962]: SERIES
+                  - paragraph
+                - generic [ref=e963]:
+                  - generic [ref=e964]: RECOMENDADO
+                  - generic [ref=e965]: Ver Detalhes
+          - 'link "Loki Season 2 FASE 5 #44 Loki Season 2 2023 SERIES ESSENCIAL Ver Detalhes" [ref=e969] [cursor=pointer]':
+            - /url: /title/cebfca2f-cc5c-4140-ae00-7f28b1952e1a
+            - generic [ref=e970]:
+              - generic [ref=e971]:
+                - img "Loki Season 2" [ref=e972]
+                - generic [ref=e974]:
+                  - generic [ref=e975]: FASE 5
+                  - generic [ref=e976]: "#44"
+              - generic [ref=e977]:
+                - generic [ref=e978]:
+                  - heading "Loki Season 2" [level=3] [ref=e979]
+                  - generic [ref=e980]:
+                    - generic [ref=e981]: "2023"
+                    - generic [ref=e983]: SERIES
+                  - paragraph
+                - generic [ref=e984]:
+                  - generic [ref=e985]: ESSENCIAL
+                  - generic [ref=e986]: Ver Detalhes
+          - 'link "The Marvels FASE 5 #45 The Marvels 2023 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e990] [cursor=pointer]':
+            - /url: /title/2d275cdc-193f-459b-a558-d4723e6df188
+            - generic [ref=e991]:
+              - generic [ref=e992]:
+                - img "The Marvels" [ref=e993]
+                - generic [ref=e995]:
+                  - generic [ref=e996]: FASE 5
+                  - generic [ref=e997]: "#45"
+              - generic [ref=e998]:
+                - generic [ref=e999]:
+                  - heading "The Marvels" [level=3] [ref=e1000]
+                  - generic [ref=e1001]:
+                    - generic [ref=e1002]: "2023"
+                    - generic [ref=e1004]: MOVIE
+                  - paragraph
+                - generic [ref=e1005]:
+                  - generic [ref=e1006]: MUITO IMPORTANTE
+                  - generic [ref=e1007]: Ver Detalhes
+          - 'link "Echo FASE 5 #46 Echo 2024 SERIES COMPLEMENTAR Ver Detalhes" [ref=e1011] [cursor=pointer]':
+            - /url: /title/9a8a36ab-9507-4f1a-be94-461505960e58
+            - generic [ref=e1012]:
+              - generic [ref=e1013]:
+                - img "Echo" [ref=e1014]
+                - generic [ref=e1016]:
+                  - generic [ref=e1017]: FASE 5
+                  - generic [ref=e1018]: "#46"
+              - generic [ref=e1019]:
+                - generic [ref=e1020]:
+                  - heading "Echo" [level=3] [ref=e1021]
+                  - generic [ref=e1022]:
+                    - generic [ref=e1023]: "2024"
+                    - generic [ref=e1025]: SERIES
+                  - paragraph
+                - generic [ref=e1026]:
+                  - generic [ref=e1027]: COMPLEMENTAR
+                  - generic [ref=e1028]: Ver Detalhes
+          - 'link "Deadpool & Wolverine FASE 5 #47 Deadpool & Wolverine 2024 MOVIE ESSENCIAL Ver Detalhes" [ref=e1032] [cursor=pointer]':
+            - /url: /title/83285804-3a8b-4315-a3a9-e92991a338c3
+            - generic [ref=e1033]:
+              - generic [ref=e1034]:
+                - img "Deadpool & Wolverine" [ref=e1035]
+                - generic [ref=e1037]:
+                  - generic [ref=e1038]: FASE 5
+                  - generic [ref=e1039]: "#47"
+              - generic [ref=e1040]:
+                - generic [ref=e1041]:
+                  - heading "Deadpool & Wolverine" [level=3] [ref=e1042]
+                  - generic [ref=e1043]:
+                    - generic [ref=e1044]: "2024"
+                    - generic [ref=e1046]: MOVIE
+                  - paragraph
+                - generic [ref=e1047]:
+                  - generic [ref=e1048]: ESSENCIAL
+                  - generic [ref=e1049]: Ver Detalhes
+          - 'link "Agatha All Along FASE 5 #48 Agatha All Along 2024 SERIES RECOMENDADO Ver Detalhes" [ref=e1053] [cursor=pointer]':
+            - /url: /title/29f339e2-8d1c-4faf-879b-5a43a4fbac44
+            - generic [ref=e1054]:
+              - generic [ref=e1055]:
+                - img "Agatha All Along" [ref=e1056]
+                - generic [ref=e1058]:
+                  - generic [ref=e1059]: FASE 5
+                  - generic [ref=e1060]: "#48"
+              - generic [ref=e1061]:
+                - generic [ref=e1062]:
+                  - heading "Agatha All Along" [level=3] [ref=e1063]
+                  - generic [ref=e1064]:
+                    - generic [ref=e1065]: "2024"
+                    - generic [ref=e1067]: SERIES
+                  - paragraph
+                - generic [ref=e1068]:
+                  - generic [ref=e1069]: RECOMENDADO
+                  - generic [ref=e1070]: Ver Detalhes
+          - 'link "Captain America: Brave New World FASE 6 #49 Captain America: Brave New World 2025 MOVIE ESSENCIAL Ver Detalhes" [ref=e1074] [cursor=pointer]':
+            - /url: /title/f80f45a1-0214-4a68-86bb-0e17f8b0da0f
+            - generic [ref=e1075]:
+              - generic [ref=e1076]:
+                - 'img "Captain America: Brave New World" [ref=e1077]'
+                - generic [ref=e1079]:
+                  - generic [ref=e1080]: FASE 6
+                  - generic [ref=e1081]: "#49"
+              - generic [ref=e1082]:
+                - generic [ref=e1083]:
+                  - 'heading "Captain America: Brave New World" [level=3] [ref=e1084]'
+                  - generic [ref=e1085]:
+                    - generic [ref=e1086]: "2025"
+                    - generic [ref=e1088]: MOVIE
+                  - paragraph
+                - generic [ref=e1089]:
+                  - generic [ref=e1090]: ESSENCIAL
+                  - generic [ref=e1091]: Ver Detalhes
+          - 'link "Thunderbolts* FASE 6 #50 Thunderbolts* 2025 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1095] [cursor=pointer]':
+            - /url: /title/749f5d84-1ce6-471e-9f34-aec316b3c665
+            - generic [ref=e1096]:
+              - generic [ref=e1097]:
+                - img "Thunderbolts*" [ref=e1098]
+                - generic [ref=e1100]:
+                  - generic [ref=e1101]: FASE 6
+                  - generic [ref=e1102]: "#50"
+              - generic [ref=e1103]:
+                - generic [ref=e1104]:
+                  - heading "Thunderbolts*" [level=3] [ref=e1105]
+                  - generic [ref=e1106]:
+                    - generic [ref=e1107]: "2025"
+                    - generic [ref=e1109]: MOVIE
+                  - paragraph
+                - generic [ref=e1110]:
+                  - generic [ref=e1111]: MUITO IMPORTANTE
+                  - generic [ref=e1112]: Ver Detalhes
+          - 'link "The Fantastic Four: First Steps FASE 6 #51 The Fantastic Four: First Steps 2025 MOVIE ESSENCIAL Ver Detalhes" [ref=e1116] [cursor=pointer]':
+            - /url: /title/1f4a261f-a23f-4ec0-bc29-8b439348d3d2
+            - generic [ref=e1117]:
+              - generic [ref=e1118]:
+                - 'img "The Fantastic Four: First Steps" [ref=e1119]'
+                - generic [ref=e1121]:
+                  - generic [ref=e1122]: FASE 6
+                  - generic [ref=e1123]: "#51"
+              - generic [ref=e1124]:
+                - generic [ref=e1125]:
+                  - 'heading "The Fantastic Four: First Steps" [level=3] [ref=e1126]'
+                  - generic [ref=e1127]:
+                    - generic [ref=e1128]: "2025"
+                    - generic [ref=e1130]: MOVIE
+                  - paragraph
+                - generic [ref=e1131]:
+                  - generic [ref=e1132]: ESSENCIAL
+                  - generic [ref=e1133]: Ver Detalhes
+          - 'link "Avengers: Doomsday FASE 6 #52 Avengers: Doomsday 2026 MOVIE ESSENCIAL Ver Detalhes" [ref=e1137] [cursor=pointer]':
+            - /url: /title/d7d808f4-d743-4d38-abc6-c2ea340da176
+            - generic [ref=e1138]:
+              - generic [ref=e1139]:
+                - 'img "Avengers: Doomsday" [ref=e1140]'
+                - generic [ref=e1142]:
+                  - generic [ref=e1143]: FASE 6
+                  - generic [ref=e1144]: "#52"
+              - generic [ref=e1145]:
+                - generic [ref=e1146]:
+                  - 'heading "Avengers: Doomsday" [level=3] [ref=e1147]'
+                  - generic [ref=e1148]:
+                    - generic [ref=e1149]: "2026"
+                    - generic [ref=e1151]: MOVIE
+                  - paragraph
+                - generic [ref=e1152]:
+                  - generic [ref=e1153]: ESSENCIAL
+                  - generic [ref=e1154]: Ver Detalhes
+          - 'link "Avengers: Secret Wars FASE 6 #53 Avengers: Secret Wars 2027 MOVIE ESSENCIAL Ver Detalhes" [ref=e1158] [cursor=pointer]':
+            - /url: /title/4be40ca8-aae3-4891-ba25-0605f86290fd
+            - generic [ref=e1159]:
+              - generic [ref=e1160]:
+                - 'img "Avengers: Secret Wars" [ref=e1161]'
+                - generic [ref=e1163]:
+                  - generic [ref=e1164]: FASE 6
+                  - generic [ref=e1165]: "#53"
+              - generic [ref=e1166]:
+                - generic [ref=e1167]:
+                  - 'heading "Avengers: Secret Wars" [level=3] [ref=e1168]'
+                  - generic [ref=e1169]:
+                    - generic [ref=e1170]: "2027"
+                    - generic [ref=e1172]: MOVIE
+                  - paragraph
+                - generic [ref=e1173]:
+                  - generic [ref=e1174]: ESSENCIAL
+                  - generic [ref=e1175]: Ver Detalhes
+          - 'link "Spider-Man Universo Homem-Aranha (Legado) #101 Spider-Man 2002 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1179] [cursor=pointer]':
+            - /url: /title/2a6807d8-8ebf-422b-852d-a0d265af946d
+            - generic [ref=e1180]:
+              - generic [ref=e1181]:
+                - img "Spider-Man" [ref=e1182]
+                - generic [ref=e1184]:
+                  - generic [ref=e1185]: Universo Homem-Aranha (Legado)
+                  - generic [ref=e1186]: "#101"
+              - generic [ref=e1187]:
+                - generic [ref=e1188]:
+                  - heading "Spider-Man" [level=3] [ref=e1189]
+                  - generic [ref=e1190]:
+                    - generic [ref=e1191]: "2002"
+                    - generic [ref=e1193]: MOVIE
+                  - paragraph
+                - generic [ref=e1194]:
+                  - generic [ref=e1195]: MUITO IMPORTANTE
+                  - generic [ref=e1196]: Ver Detalhes
+          - 'link "Spider-Man 2 Universo Homem-Aranha (Legado) #102 Spider-Man 2 2004 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1200] [cursor=pointer]':
+            - /url: /title/1bad0108-0502-478d-9611-9a69a33148dd
+            - generic [ref=e1201]:
+              - generic [ref=e1202]:
+                - img "Spider-Man 2" [ref=e1203]
+                - generic [ref=e1205]:
+                  - generic [ref=e1206]: Universo Homem-Aranha (Legado)
+                  - generic [ref=e1207]: "#102"
+              - generic [ref=e1208]:
+                - generic [ref=e1209]:
+                  - heading "Spider-Man 2" [level=3] [ref=e1210]
+                  - generic [ref=e1211]:
+                    - generic [ref=e1212]: "2004"
+                    - generic [ref=e1214]: MOVIE
+                  - paragraph
+                - generic [ref=e1215]:
+                  - generic [ref=e1216]: MUITO IMPORTANTE
+                  - generic [ref=e1217]: Ver Detalhes
+          - 'link "Spider-Man 3 Universo Homem-Aranha (Legado) #103 Spider-Man 3 2007 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e1221] [cursor=pointer]':
+            - /url: /title/f5f4e45a-3a78-4319-ab18-8b7cf155323b
+            - generic [ref=e1222]:
+              - generic [ref=e1223]:
+                - img "Spider-Man 3" [ref=e1224]
+                - generic [ref=e1226]:
+                  - generic [ref=e1227]: Universo Homem-Aranha (Legado)
+                  - generic [ref=e1228]: "#103"
+              - generic [ref=e1229]:
+                - generic [ref=e1230]:
+                  - heading "Spider-Man 3" [level=3] [ref=e1231]
+                  - generic [ref=e1232]:
+                    - generic [ref=e1233]: "2007"
+                    - generic [ref=e1235]: MOVIE
+                  - paragraph
+                - generic [ref=e1236]:
+                  - generic [ref=e1237]: COMPLEMENTAR
+                  - generic [ref=e1238]: Ver Detalhes
+          - 'link "The Amazing Spider-Man Universo Homem-Aranha (Legado) #104 The Amazing Spider-Man 2012 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1242] [cursor=pointer]':
+            - /url: /title/8992efc5-42d1-4913-8044-e13b3e297595
+            - generic [ref=e1243]:
+              - generic [ref=e1244]:
+                - img "The Amazing Spider-Man" [ref=e1245]
+                - generic [ref=e1247]:
+                  - generic [ref=e1248]: Universo Homem-Aranha (Legado)
+                  - generic [ref=e1249]: "#104"
+              - generic [ref=e1250]:
+                - generic [ref=e1251]:
+                  - heading "The Amazing Spider-Man" [level=3] [ref=e1252]
+                  - generic [ref=e1253]:
+                    - generic [ref=e1254]: "2012"
+                    - generic [ref=e1256]: MOVIE
+                  - paragraph
+                - generic [ref=e1257]:
+                  - generic [ref=e1258]: MUITO IMPORTANTE
+                  - generic [ref=e1259]: Ver Detalhes
+          - 'link "The Amazing Spider-Man 2 Universo Homem-Aranha (Legado) #105 The Amazing Spider-Man 2 2014 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e1263] [cursor=pointer]':
+            - /url: /title/4515e251-ec22-4a87-9512-41fe5fda4f5f
+            - generic [ref=e1264]:
+              - generic [ref=e1265]:
+                - img "The Amazing Spider-Man 2" [ref=e1266]
+                - generic [ref=e1268]:
+                  - generic [ref=e1269]: Universo Homem-Aranha (Legado)
+                  - generic [ref=e1270]: "#105"
+              - generic [ref=e1271]:
+                - generic [ref=e1272]:
+                  - heading "The Amazing Spider-Man 2" [level=3] [ref=e1273]
+                  - generic [ref=e1274]:
+                    - generic [ref=e1275]: "2014"
+                    - generic [ref=e1277]: MOVIE
+                  - paragraph
+                - generic [ref=e1278]:
+                  - generic [ref=e1279]: COMPLEMENTAR
+                  - generic [ref=e1280]: Ver Detalhes
+          - 'link "Venom Sony Spider-Man Universe #106 Venom 2018 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e1284] [cursor=pointer]':
+            - /url: /title/3b280e13-0017-4e18-94e3-ef5c887e99c8
+            - generic [ref=e1285]:
+              - generic [ref=e1286]:
+                - img "Venom" [ref=e1287]
+                - generic [ref=e1289]:
+                  - generic [ref=e1290]: Sony Spider-Man Universe
+                  - generic [ref=e1291]: "#106"
+              - generic [ref=e1292]:
+                - generic [ref=e1293]:
+                  - heading "Venom" [level=3] [ref=e1294]
+                  - generic [ref=e1295]:
+                    - generic [ref=e1296]: "2018"
+                    - generic [ref=e1298]: MOVIE
+                  - paragraph
+                - generic [ref=e1299]:
+                  - generic [ref=e1300]: COMPLEMENTAR
+                  - generic [ref=e1301]: Ver Detalhes
+          - 'link "Venom: Let There Be Carnage Sony Spider-Man Universe #107 Venom: Let There Be Carnage 2021 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e1305] [cursor=pointer]':
+            - /url: /title/5a3da1d1-add9-459a-979f-d95b285c9bf4
+            - generic [ref=e1306]:
+              - generic [ref=e1307]:
+                - 'img "Venom: Let There Be Carnage" [ref=e1308]'
+                - generic [ref=e1310]:
+                  - generic [ref=e1311]: Sony Spider-Man Universe
+                  - generic [ref=e1312]: "#107"
+              - generic [ref=e1313]:
+                - generic [ref=e1314]:
+                  - 'heading "Venom: Let There Be Carnage" [level=3] [ref=e1315]'
+                  - generic [ref=e1316]:
+                    - generic [ref=e1317]: "2021"
+                    - generic [ref=e1319]: MOVIE
+                  - paragraph
+                - generic [ref=e1320]:
+                  - generic [ref=e1321]: COMPLEMENTAR
+                  - generic [ref=e1322]: Ver Detalhes
+          - 'link "Morbius Sony Spider-Man Universe #108 Morbius 2022 MOVIE OPCIONAL Ver Detalhes" [ref=e1326] [cursor=pointer]':
+            - /url: /title/fe53c8fa-a8d5-4e13-aced-e1c448b209e9
+            - generic [ref=e1327]:
+              - generic [ref=e1328]:
+                - img "Morbius" [ref=e1329]
+                - generic [ref=e1331]:
+                  - generic [ref=e1332]: Sony Spider-Man Universe
+                  - generic [ref=e1333]: "#108"
+              - generic [ref=e1334]:
+                - generic [ref=e1335]:
+                  - heading "Morbius" [level=3] [ref=e1336]
+                  - generic [ref=e1337]:
+                    - generic [ref=e1338]: "2022"
+                    - generic [ref=e1340]: MOVIE
+                  - paragraph
+                - generic [ref=e1341]:
+                  - generic [ref=e1342]: OPCIONAL
+                  - generic [ref=e1343]: Ver Detalhes
+          - 'link "X-Men Universo Mutante (Legado) #201 X-Men 2000 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1347] [cursor=pointer]':
+            - /url: /title/7c3d1e66-aa86-4ebe-a9cb-659cfc9855d1
+            - generic [ref=e1348]:
+              - generic [ref=e1349]:
+                - img "X-Men" [ref=e1350]
+                - generic [ref=e1352]:
+                  - generic [ref=e1353]: Universo Mutante (Legado)
+                  - generic [ref=e1354]: "#201"
+              - generic [ref=e1355]:
+                - generic [ref=e1356]:
+                  - heading "X-Men" [level=3] [ref=e1357]
+                  - generic [ref=e1358]:
+                    - generic [ref=e1359]: "2000"
+                    - generic [ref=e1361]: MOVIE
+                  - paragraph
+                - generic [ref=e1362]:
+                  - generic [ref=e1363]: MUITO IMPORTANTE
+                  - generic [ref=e1364]: Ver Detalhes
+          - 'link "X2: X-Men United Universo Mutante (Legado) #202 X2: X-Men United 2003 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1368] [cursor=pointer]':
+            - /url: /title/6c9fa8af-a11a-4693-b4c0-140063822787
+            - generic [ref=e1369]:
+              - generic [ref=e1370]:
+                - 'img "X2: X-Men United" [ref=e1371]'
+                - generic [ref=e1373]:
+                  - generic [ref=e1374]: Universo Mutante (Legado)
+                  - generic [ref=e1375]: "#202"
+              - generic [ref=e1376]:
+                - generic [ref=e1377]:
+                  - 'heading "X2: X-Men United" [level=3] [ref=e1378]'
+                  - generic [ref=e1379]:
+                    - generic [ref=e1380]: "2003"
+                    - generic [ref=e1382]: MOVIE
+                  - paragraph
+                - generic [ref=e1383]:
+                  - generic [ref=e1384]: MUITO IMPORTANTE
+                  - generic [ref=e1385]: Ver Detalhes
+          - 'link "X-Men: The Last Stand Universo Mutante (Legado) #203 X-Men: The Last Stand 2006 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e1389] [cursor=pointer]':
+            - /url: /title/61e1395c-bb0d-47de-a43a-db19ddf81639
+            - generic [ref=e1390]:
+              - generic [ref=e1391]:
+                - 'img "X-Men: The Last Stand" [ref=e1392]'
+                - generic [ref=e1394]:
+                  - generic [ref=e1395]: Universo Mutante (Legado)
+                  - generic [ref=e1396]: "#203"
+              - generic [ref=e1397]:
+                - generic [ref=e1398]:
+                  - 'heading "X-Men: The Last Stand" [level=3] [ref=e1399]'
+                  - generic [ref=e1400]:
+                    - generic [ref=e1401]: "2006"
+                    - generic [ref=e1403]: MOVIE
+                  - paragraph
+                - generic [ref=e1404]:
+                  - generic [ref=e1405]: COMPLEMENTAR
+                  - generic [ref=e1406]: Ver Detalhes
+          - 'link "X-Men Origins: Wolverine Universo Mutante (Legado) #204 X-Men Origins: Wolverine 2009 MOVIE OPCIONAL Ver Detalhes" [ref=e1410] [cursor=pointer]':
+            - /url: /title/f3c6d7ca-e9ed-41a1-aeff-74809172b101
+            - generic [ref=e1411]:
+              - generic [ref=e1412]:
+                - 'img "X-Men Origins: Wolverine" [ref=e1413]'
+                - generic [ref=e1415]:
+                  - generic [ref=e1416]: Universo Mutante (Legado)
+                  - generic [ref=e1417]: "#204"
+              - generic [ref=e1418]:
+                - generic [ref=e1419]:
+                  - 'heading "X-Men Origins: Wolverine" [level=3] [ref=e1420]'
+                  - generic [ref=e1421]:
+                    - generic [ref=e1422]: "2009"
+                    - generic [ref=e1424]: MOVIE
+                  - paragraph
+                - generic [ref=e1425]:
+                  - generic [ref=e1426]: OPCIONAL
+                  - generic [ref=e1427]: Ver Detalhes
+          - 'link "X-Men: First Class Universo Mutante (Legado) #205 X-Men: First Class 2011 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1431] [cursor=pointer]':
+            - /url: /title/a8ef18a9-38bf-44da-b664-8ec9b418d772
+            - generic [ref=e1432]:
+              - generic [ref=e1433]:
+                - 'img "X-Men: First Class" [ref=e1434]'
+                - generic [ref=e1436]:
+                  - generic [ref=e1437]: Universo Mutante (Legado)
+                  - generic [ref=e1438]: "#205"
+              - generic [ref=e1439]:
+                - generic [ref=e1440]:
+                  - 'heading "X-Men: First Class" [level=3] [ref=e1441]'
+                  - generic [ref=e1442]:
+                    - generic [ref=e1443]: "2011"
+                    - generic [ref=e1445]: MOVIE
+                  - paragraph
+                - generic [ref=e1446]:
+                  - generic [ref=e1447]: MUITO IMPORTANTE
+                  - generic [ref=e1448]: Ver Detalhes
+          - 'link "The Wolverine Universo Mutante (Legado) #206 The Wolverine 2013 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e1452] [cursor=pointer]':
+            - /url: /title/0206753d-03e0-4e57-8fc9-d02e962d317a
+            - generic [ref=e1453]:
+              - generic [ref=e1454]:
+                - img "The Wolverine" [ref=e1455]
+                - generic [ref=e1457]:
+                  - generic [ref=e1458]: Universo Mutante (Legado)
+                  - generic [ref=e1459]: "#206"
+              - generic [ref=e1460]:
+                - generic [ref=e1461]:
+                  - heading "The Wolverine" [level=3] [ref=e1462]
+                  - generic [ref=e1463]:
+                    - generic [ref=e1464]: "2013"
+                    - generic [ref=e1466]: MOVIE
+                  - paragraph
+                - generic [ref=e1467]:
+                  - generic [ref=e1468]: COMPLEMENTAR
+                  - generic [ref=e1469]: Ver Detalhes
+          - 'link "X-Men: Days of Future Past Universo Mutante (Legado) #207 X-Men: Days of Future Past 2014 MOVIE ESSENCIAL Ver Detalhes" [ref=e1473] [cursor=pointer]':
+            - /url: /title/650585fa-f63c-428e-8de0-4adf47bf4825
+            - generic [ref=e1474]:
+              - generic [ref=e1475]:
+                - 'img "X-Men: Days of Future Past" [ref=e1476]'
+                - generic [ref=e1478]:
+                  - generic [ref=e1479]: Universo Mutante (Legado)
+                  - generic [ref=e1480]: "#207"
+              - generic [ref=e1481]:
+                - generic [ref=e1482]:
+                  - 'heading "X-Men: Days of Future Past" [level=3] [ref=e1483]'
+                  - generic [ref=e1484]:
+                    - generic [ref=e1485]: "2014"
+                    - generic [ref=e1487]: MOVIE
+                  - paragraph
+                - generic [ref=e1488]:
+                  - generic [ref=e1489]: ESSENCIAL
+                  - generic [ref=e1490]: Ver Detalhes
+          - 'link "Deadpool Universo Mutante (Legado) #208 Deadpool 2016 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1494] [cursor=pointer]':
+            - /url: /title/e4b3890a-7a78-4459-83e9-85c9af4a887d
+            - generic [ref=e1495]:
+              - generic [ref=e1496]:
+                - img "Deadpool" [ref=e1497]
+                - generic [ref=e1499]:
+                  - generic [ref=e1500]: Universo Mutante (Legado)
+                  - generic [ref=e1501]: "#208"
+              - generic [ref=e1502]:
+                - generic [ref=e1503]:
+                  - heading "Deadpool" [level=3] [ref=e1504]
+                  - generic [ref=e1505]:
+                    - generic [ref=e1506]: "2016"
+                    - generic [ref=e1508]: MOVIE
+                  - paragraph
+                - generic [ref=e1509]:
+                  - generic [ref=e1510]: MUITO IMPORTANTE
+                  - generic [ref=e1511]: Ver Detalhes
+          - 'link "X-Men: Apocalypse Universo Mutante (Legado) #209 X-Men: Apocalypse 2016 MOVIE COMPLEMENTAR Ver Detalhes" [ref=e1515] [cursor=pointer]':
+            - /url: /title/e6ed6fab-6c7a-4a54-a426-d58ff2fbcfdb
+            - generic [ref=e1516]:
+              - generic [ref=e1517]:
+                - 'img "X-Men: Apocalypse" [ref=e1518]'
+                - generic [ref=e1520]:
+                  - generic [ref=e1521]: Universo Mutante (Legado)
+                  - generic [ref=e1522]: "#209"
+              - generic [ref=e1523]:
+                - generic [ref=e1524]:
+                  - 'heading "X-Men: Apocalypse" [level=3] [ref=e1525]'
+                  - generic [ref=e1526]:
+                    - generic [ref=e1527]: "2016"
+                    - generic [ref=e1529]: MOVIE
+                  - paragraph
+                - generic [ref=e1530]:
+                  - generic [ref=e1531]: COMPLEMENTAR
+                  - generic [ref=e1532]: Ver Detalhes
+          - 'link "Logan Universo Mutante (Legado) #210 Logan 2017 MOVIE ESSENCIAL Ver Detalhes" [ref=e1536] [cursor=pointer]':
+            - /url: /title/2492a32a-b54f-4694-ac60-ba36e2250a27
+            - generic [ref=e1537]:
+              - generic [ref=e1538]:
+                - img "Logan" [ref=e1539]
+                - generic [ref=e1541]:
+                  - generic [ref=e1542]: Universo Mutante (Legado)
+                  - generic [ref=e1543]: "#210"
+              - generic [ref=e1544]:
+                - generic [ref=e1545]:
+                  - heading "Logan" [level=3] [ref=e1546]
+                  - generic [ref=e1547]:
+                    - generic [ref=e1548]: "2017"
+                    - generic [ref=e1550]: MOVIE
+                  - paragraph
+                - generic [ref=e1551]:
+                  - generic [ref=e1552]: ESSENCIAL
+                  - generic [ref=e1553]: Ver Detalhes
+          - 'link "Deadpool 2 Universo Mutante (Legado) #211 Deadpool 2 2018 MOVIE MUITO IMPORTANTE Ver Detalhes" [ref=e1557] [cursor=pointer]':
+            - /url: /title/78bd67d1-31e3-467a-b30b-5a6040b25637
+            - generic [ref=e1558]:
+              - generic [ref=e1559]:
+                - img "Deadpool 2" [ref=e1560]
+                - generic [ref=e1562]:
+                  - generic [ref=e1563]: Universo Mutante (Legado)
+                  - generic [ref=e1564]: "#211"
+              - generic [ref=e1565]:
+                - generic [ref=e1566]:
+                  - heading "Deadpool 2" [level=3] [ref=e1567]
+                  - generic [ref=e1568]:
+                    - generic [ref=e1569]: "2018"
+                    - generic [ref=e1571]: MOVIE
+                  - paragraph
+                - generic [ref=e1572]:
+                  - generic [ref=e1573]: MUITO IMPORTANTE
+                  - generic [ref=e1574]: Ver Detalhes
+          - 'link "Dark Phoenix Universo Mutante (Legado) #212 Dark Phoenix 2019 MOVIE OPCIONAL Ver Detalhes" [ref=e1578] [cursor=pointer]':
+            - /url: /title/fe924f73-7ab8-4530-b07b-f63330a6c30d
+            - generic [ref=e1579]:
+              - generic [ref=e1580]:
+                - img "Dark Phoenix" [ref=e1581]
+                - generic [ref=e1583]:
+                  - generic [ref=e1584]: Universo Mutante (Legado)
+                  - generic [ref=e1585]: "#212"
+              - generic [ref=e1586]:
+                - generic [ref=e1587]:
+                  - heading "Dark Phoenix" [level=3] [ref=e1588]
+                  - generic [ref=e1589]:
+                    - generic [ref=e1590]: "2019"
+                    - generic [ref=e1592]: MOVIE
+                  - paragraph
+                - generic [ref=e1593]:
+                  - generic [ref=e1594]: OPCIONAL
+                  - generic [ref=e1595]: Ver Detalhes
+          - 'link "The New Mutants Universo Mutante (Legado) #213 The New Mutants 2020 MOVIE OPCIONAL Ver Detalhes" [ref=e1599] [cursor=pointer]':
+            - /url: /title/fbff41c9-6a07-48d8-9e1d-df792293ee2c
+            - generic [ref=e1600]:
+              - generic [ref=e1601]:
+                - img "The New Mutants" [ref=e1602]
+                - generic [ref=e1604]:
+                  - generic [ref=e1605]: Universo Mutante (Legado)
+                  - generic [ref=e1606]: "#213"
+              - generic [ref=e1607]:
+                - generic [ref=e1608]:
+                  - heading "The New Mutants" [level=3] [ref=e1609]
+                  - generic [ref=e1610]:
+                    - generic [ref=e1611]: "2020"
+                    - generic [ref=e1613]: MOVIE
+                  - paragraph
+                - generic [ref=e1614]:
+                  - generic [ref=e1615]: OPCIONAL
+                  - generic [ref=e1616]: Ver Detalhes
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test';
+  2  | 
+  3  | test('has title and hero section', async ({ page }) => {
+  4  |   await page.goto('/');
+  5  | 
+  6  |   // Expect a title "to contain" a substring.
+  7  |   await expect(page).toHaveTitle(/Marvel Watch Tracker/);
+  8  | 
+  9  |   // Expect the page to have the hero heading
+  10 |   const heading = page.locator('h1').first();
+  11 |   await expect(heading).toBeVisible();
+  12 | 
+  13 |   // Check if navigation works
+> 14 |   await page.click('text=Filmes');
+     |              ^ Error: page.click: Test timeout of 30000ms exceeded.
+  15 |   
+  16 |   // Wait for the URL to change
+  17 |   await expect(page).toHaveURL(/.*filmes/);
+  18 |   
+  19 |   // Expect the catalog heading
+  20 |   await expect(page.locator('h1', { hasText: 'Catálogo Marvel' })).toBeVisible();
+  21 | });
+  22 | 
+  23 | test('mobile view test', async ({ page, isMobile }) => {
+  24 |   // Simple check for mobile responsiveness
+  25 |   await page.goto('/');
+  26 |   const navbar = page.locator('nav');
+  27 |   await expect(navbar).toBeVisible();
+  28 | });
+  29 | 
+```
