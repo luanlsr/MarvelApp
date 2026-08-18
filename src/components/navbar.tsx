@@ -46,15 +46,23 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+          <Link href="/login" className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-md font-bold transition-all hover:scale-105 drop-shadow-lg ml-4">
+            Entrar
+          </Link>
         </div>
 
         {/* Mobile Toggle Button */}
-        <button 
-          className="md:hidden text-white z-50 p-2"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="md:hidden flex items-center gap-4 z-50">
+          <Link href="/login" className="text-sm px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-md font-bold transition-all">
+            Entrar
+          </Link>
+          <button 
+            className="text-white p-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

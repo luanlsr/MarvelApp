@@ -27,6 +27,8 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+import { AudioPlayer } from "@/components/audio-player";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -37,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col bg-[#040714] text-zinc-200 font-sans" suppressHydrationWarning>
         <Navbar />
         {children}
+        <AudioPlayer />
       </body>
     </html>
   );
