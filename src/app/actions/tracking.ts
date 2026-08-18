@@ -1,12 +1,12 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
-import { createClient } from '@/utils/supabase/server'
+import { auth } from '@/auth'
 import { revalidatePath } from 'next/cache'
 
 export async function markAsWatched(titleId: string, rating?: number, review?: string) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth()
+  const user = session?.user
 
   // Fallback to a mock user ID if not logged in (for testing purposes during development)
   const userId = user?.id || 'test-user-id'
@@ -52,8 +52,8 @@ export async function markAsWatched(titleId: string, rating?: number, review?: s
 }
 
 export async function markEpisodeAsWatched(episodeId: string, titleId: string) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth()
+  const user = session?.user
   const userId = user?.id || 'test-user-id'
 
   if (!user) {
@@ -90,8 +90,8 @@ export async function markEpisodeAsWatched(episodeId: string, titleId: string) {
 }
 
 export async function markSeasonAsWatched(seasonId: string, titleId: string) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth()
+  const user = session?.user
   const userId = user?.id || 'test-user-id'
 
   if (!user) {

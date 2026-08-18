@@ -1,20 +1,11 @@
 'use client'
 
-import { createClient } from '@/utils/supabase/client'
-import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 
 export default function LoginPage() {
-  const supabase = createClient()
-  const router = useRouter()
-
   const handleGoogleLogin = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    })
+    await signIn('google', { redirectTo: '/' })
   }
 
   return (
