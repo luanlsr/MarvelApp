@@ -58,7 +58,7 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div className={cn(
-        "md:hidden fixed inset-0 bg-black/95 backdrop-blur-xl transition-all duration-300 flex flex-col items-center justify-center gap-8",
+        "md:hidden fixed inset-0 bg-black/95 backdrop-blur-xl transition-all duration-300 flex flex-col items-center gap-8 pt-32 pb-12 overflow-y-auto",
         isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       )}>
         {navItems.map((item) => (
