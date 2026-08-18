@@ -3,5 +3,4 @@ builder = "NIXPACKS"
 buildCommand = "npm run build"
 
 [deploy]
-startCommand = "npm start"
-releaseCommand = "npx prisma migrate deploy && npx tsx prisma/seed-all.ts && npx tsx prisma/seed-characters.ts"
+startCommand = "npx prisma migrate deploy && npx --yes tsx prisma/seed-all.ts && npx --yes tsx prisma/seed-characters.ts && npm start"
