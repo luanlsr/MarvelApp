@@ -7,7 +7,7 @@ import { Clock, Calendar, Film } from 'lucide-react'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { ChevronLeft } from 'lucide-react'
-import { createClient } from '@/utils/supabase/server'
+import { auth } from '@/auth'
 import { cn } from '@/lib/utils'
 import { TrackingActions } from '@/components/tracking-actions'
 import { EpisodeWatchButton, SeasonWatchButton } from '@/components/episode-tracking'
@@ -21,8 +21,8 @@ interface TitlePageProps {
 
 export default async function TitlePage(props: TitlePageProps) {
   const params = await props.params;
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth();
+  const user = session?.user
   const userId = user?.id || 'test-user-id' // fallback for development
 
   const title = await prisma.title.findUnique({

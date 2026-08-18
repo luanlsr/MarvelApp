@@ -1,13 +1,13 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
-import { createClient } from '@/utils/supabase/server'
+import { auth } from '@/auth'
 import { revalidatePath } from 'next/cache'
 import { getMarathonProgress } from './marathon'
 
 export async function createGoal(targetDate: Date, hoursPerWeek: number) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth();
+  const user = session?.user
   const userId = user?.id || 'test-user-id'
 
   if (!user) {

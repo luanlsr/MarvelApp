@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { prisma } from '@/lib/prisma'
-import { createClient } from '@/utils/supabase/server'
+import { auth } from '@/auth'
 import Link from 'next/link'
 import { ChevronLeft, BarChart3, Clock, Film, Award } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -9,8 +9,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 
 export default async function EstatisticasPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth();
+  const user = session?.user
   const userId = user?.id || 'test-user-id'
 
   const userProgress = await prisma.userProgress.findMany({

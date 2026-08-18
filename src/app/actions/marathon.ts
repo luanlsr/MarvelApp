@@ -1,12 +1,12 @@
 'use server'
 
 import { prisma } from '@/lib/prisma'
-import { createClient } from '@/utils/supabase/server'
+import { auth } from '@/auth'
 import { Title } from '@prisma/client'
 
 export async function getMarathonProgress() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth();
+  const user = session?.user
   const userId = user?.id || 'test-user-id'
 
   const allTitles = await prisma.title.findMany({

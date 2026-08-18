@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { prisma } from '@/lib/prisma'
-import { createClient } from '@/utils/supabase/server'
+import { auth } from '@/auth'
 import { generateMarathonCalendar } from '@/app/actions/goals'
 import { getMarathonProgress } from '@/app/actions/marathon'
 import Link from 'next/link'
@@ -12,8 +12,8 @@ import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
 
 export default async function PlanejamentoPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const session = await auth();
+  const user = session?.user
   const userId = user?.id || 'test-user-id'
 
   const goals = await prisma.goal.findMany({
