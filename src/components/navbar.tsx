@@ -58,20 +58,22 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div className={cn(
-        "md:hidden fixed inset-0 bg-black/95 backdrop-blur-xl transition-all duration-300 flex flex-col items-center gap-8 pt-32 pb-12 overflow-y-auto",
+        "md:hidden fixed inset-0 -z-10 bg-black/80 backdrop-blur-lg transition-all duration-300 overflow-y-auto",
         isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       )}>
-        {navItems.map((item) => (
-          <Link 
-            key={item.href} 
-            href={item.href} 
-            onClick={() => setIsOpen(false)}
-            className="text-2xl font-bold text-zinc-300 hover:text-white transition-all flex items-center gap-4"
-          >
-            <item.icon className="w-8 h-8" />
-            {item.label}
-          </Link>
-        ))}
+        <div className="flex flex-col items-center justify-start min-h-screen pt-28 pb-20 gap-8">
+          {navItems.map((item) => (
+            <Link 
+              key={item.href} 
+              href={item.href} 
+              onClick={() => setIsOpen(false)}
+              className="text-2xl font-bold text-zinc-300 hover:text-white transition-all flex items-center gap-4"
+            >
+              <item.icon className="w-8 h-8" />
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   )
