@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
 import { Badge } from '@/components/ui/badge'
-import { Clock, Calendar, Film } from 'lucide-react'
+import { Clock, Calendar, Film, Star } from 'lucide-react'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { ChevronLeft } from 'lucide-react'
@@ -23,7 +23,7 @@ export default async function TitlePage(props: TitlePageProps) {
   const params = await props.params;
   const session = await auth();
   const user = session?.user
-  const userId = user?.id || 'test-user-id' // fallback for development
+  const userId = user?.id
 
   const title = await prisma.title.findUnique({
     where: { id: params.id },
@@ -43,15 +43,22 @@ export default async function TitlePage(props: TitlePageProps) {
 
   const availability = await streamingService.getAvailability(title.title, title.originalTitle || undefined)
 
-  const userProgress = await prisma.userProgress.findMany({
+  const userProgress = userId ? await prisma.userProgress.findMany({
     where: { userId, titleId: title.id }
-  })
+  }) : []
   
   const watchedEpisodeIds = userProgress
     .filter(p => p.status === 'COMPLETED' && p.episodeId)
     .map(p => p.episodeId)
     
   const isTitleWatched = userProgress.some(p => p.status === 'COMPLETED' && !p.episodeId)
+
+  // Fetch all user reviews for this title
+  const allReviews = await prisma.userProgress.findMany({
+    where: { titleId: title.id, rating: { not: null }, review: { not: null } },
+    include: { user: true },
+    orderBy: { updatedAt: 'desc' }
+  })
 
   return (
     <div className="min-h-screen bg-black text-white pb-20">
@@ -230,6 +237,47 @@ export default async function TitlePage(props: TitlePageProps) {
                     )}
                   </div>
                   <span className="text-xs text-center font-medium line-clamp-2">{char.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Community Reviews */}
+        {allReviews.length > 0 && (
+          <div className="mt-12 space-y-6">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Star className="w-6 h-6 text-yellow-500 fill-yellow-500" />
+              Avaliações da Comunidade
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {allReviews.map((review) => (
+                <div key={review.id} className="bg-zinc-900/50 rounded-xl p-6 border border-white/5 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      {review.user?.image ? (
+                        <img src={review.user.image} alt={review.user.name || 'Usuário'} className="w-10 h-10 rounded-full object-cover" />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-sm font-bold">
+                          {review.user?.name?.charAt(0) || 'U'}
+                        </div>
+                      )}
+                      <div>
+                        <div className="font-semibold text-zinc-200">{review.user?.name || 'Agente S.H.I.E.L.D.'}</div>
+                        <div className="text-xs text-zinc-500">{new Date(review.updatedAt).toLocaleDateString('pt-BR')}</div>
+                      </div>
+                    </div>
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className={`w-4 h-4 ${i < (review.rating || 0) ? 'fill-yellow-500 text-yellow-500' : 'text-zinc-700'}`} />
+                      ))}
+                    </div>
+                  </div>
+                  {review.review && (
+                    <p className="text-zinc-300 italic text-sm border-l-2 border-white/10 pl-4 py-1">
+                      "{review.review}"
+                    </p>
+                  )}
                 </div>
               ))}
             </div>

@@ -8,17 +8,11 @@ export async function markAsWatched(titleId: string, rating?: number, review?: s
   const session = await auth()
   const user = session?.user
 
-  // Fallback to a mock user ID if not logged in (for testing purposes during development)
-  const userId = user?.id || 'test-user-id'
-
-  // Ensure user exists in prisma (or create mock)
-  if (!user) {
-    await prisma.user.upsert({
-      where: { id: userId },
-      update: {},
-      create: { id: userId, email: 'test@example.com' }
-    })
+  if (!user || !user.id) {
+    throw new Error('Você precisa estar logado para salvar seu progresso.')
   }
+  
+  const userId = user.id
 
   const existing = await prisma.userProgress.findFirst({
     where: { userId, titleId, episodeId: null }
@@ -54,15 +48,12 @@ export async function markAsWatched(titleId: string, rating?: number, review?: s
 export async function markEpisodeAsWatched(episodeId: string, titleId: string) {
   const session = await auth()
   const user = session?.user
-  const userId = user?.id || 'test-user-id'
 
-  if (!user) {
-    await prisma.user.upsert({
-      where: { id: userId },
-      update: {},
-      create: { id: userId, email: 'test@example.com' }
-    })
+  if (!user || !user.id) {
+    throw new Error('Você precisa estar logado para salvar seu progresso.')
   }
+  
+  const userId = user.id
 
   const existing = await prisma.userProgress.findFirst({
     where: { userId, episodeId }
@@ -92,15 +83,12 @@ export async function markEpisodeAsWatched(episodeId: string, titleId: string) {
 export async function markSeasonAsWatched(seasonId: string, titleId: string) {
   const session = await auth()
   const user = session?.user
-  const userId = user?.id || 'test-user-id'
 
-  if (!user) {
-    await prisma.user.upsert({
-      where: { id: userId },
-      update: {},
-      create: { id: userId, email: 'test@example.com' }
-    })
+  if (!user || !user.id) {
+    throw new Error('Você precisa estar logado para salvar seu progresso.')
   }
+  
+  const userId = user.id
 
   const episodes = await prisma.episode.findMany({ where: { seasonId } })
 
@@ -130,4 +118,3 @@ export async function markSeasonAsWatched(seasonId: string, titleId: string) {
   revalidatePath(`/title/${titleId}`)
   revalidatePath(`/`)
 }
-

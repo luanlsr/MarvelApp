@@ -27,9 +27,12 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+import { auth } from "@/auth";
 import { AudioPlayer } from "@/components/audio-player";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+  
   return (
     <html
       lang="pt-BR"
@@ -37,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-[#040714] text-zinc-200 font-sans" suppressHydrationWarning>
-        <Navbar />
+        <Navbar user={session?.user} />
         {children}
         <AudioPlayer />
       </body>

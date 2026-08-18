@@ -14,7 +14,9 @@ const navItems = [
   { href: '/estatisticas', icon: BarChart, label: 'Estatísticas' },
 ]
 
-export function Navbar() {
+import { signOut } from 'next-auth/react'
+
+export function Navbar({ user }: { user?: any }) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -46,16 +48,31 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <Link href="/login" className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-md font-bold transition-all hover:scale-105 drop-shadow-lg ml-4">
-            Entrar
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-4 ml-4">
+              <span className="text-zinc-400">Olá, {user.name?.split(' ')[0]}</span>
+              <button onClick={() => signOut({ redirectTo: '/' })} className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-md font-bold transition-all hover:scale-105 drop-shadow-lg">
+                Sair
+              </button>
+            </div>
+          ) : (
+            <Link href="/login" className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-md font-bold transition-all hover:scale-105 drop-shadow-lg ml-4">
+              Entrar
+            </Link>
+          )}
         </div>
 
         {/* Mobile Toggle Button */}
         <div className="md:hidden flex items-center gap-4 z-50">
-          <Link href="/login" className="text-sm px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-md font-bold transition-all">
-            Entrar
-          </Link>
+          {user ? (
+            <button onClick={() => signOut({ redirectTo: '/' })} className="text-sm px-4 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-md font-bold transition-all">
+              Sair
+            </button>
+          ) : (
+            <Link href="/login" className="text-sm px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-md font-bold transition-all">
+              Entrar
+            </Link>
+          )}
           <button 
             className="text-white p-2"
             onClick={() => setIsOpen(!isOpen)}
