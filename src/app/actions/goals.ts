@@ -8,15 +8,10 @@ import { getMarathonProgress } from './marathon'
 export async function createGoal(targetDate: Date, hoursPerWeek: number) {
   const session = await auth();
   const user = session?.user
-  const userId = user?.id || 'test-user-id'
-
-  if (!user) {
-    await prisma.user.upsert({
-      where: { id: userId },
-      update: {},
-      create: { id: userId, email: 'test@example.com' }
-    })
+  if (!user || !user.id) {
+    throw new Error('Você precisa estar logado para criar um planejamento.')
   }
+  const userId = user.id
 
   await prisma.goal.create({
     data: {

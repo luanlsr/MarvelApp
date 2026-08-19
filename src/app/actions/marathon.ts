@@ -6,8 +6,10 @@ import { Title } from '@prisma/client'
 
 export async function getMarathonProgress() {
   const session = await auth();
-  const user = session?.user
-  const userId = user?.id || 'test-user-id'
+  if (!session?.user?.id) {
+    return { percentage: 0, watchedItems: 0, totalItems: 0, nextRecommended: null }
+  }
+  const userId = session.user.id
 
   const allTitles = await prisma.title.findMany({
     orderBy: { timelineOrder: 'asc' },

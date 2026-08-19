@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import { prisma } from '@/lib/prisma'
 import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 import { generateMarathonCalendar } from '@/app/actions/goals'
 import { getMarathonProgress } from '@/app/actions/marathon'
 import Link from 'next/link'
@@ -13,8 +14,10 @@ import { cn } from '@/lib/utils'
 
 export default async function PlanejamentoPage() {
   const session = await auth();
-  const user = session?.user
-  const userId = user?.id || 'test-user-id'
+  if (!session?.user) {
+    redirect('/login');
+  }
+  const userId = session.user.id!
 
   const goals = await prisma.goal.findMany({
     where: { userId },

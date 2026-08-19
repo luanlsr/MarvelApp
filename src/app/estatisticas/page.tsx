@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import { prisma } from '@/lib/prisma'
 import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronLeft, BarChart3, Clock, Film, Award } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -10,8 +11,10 @@ import { cn } from '@/lib/utils'
 
 export default async function EstatisticasPage() {
   const session = await auth();
-  const user = session?.user
-  const userId = user?.id || 'test-user-id'
+  if (!session?.user) {
+    redirect('/login');
+  }
+  const userId = session.user.id!
 
   const userProgress = await prisma.userProgress.findMany({
     where: { userId, status: 'COMPLETED' },
