@@ -32,7 +32,7 @@ export default function LoginPage() {
 
         <button
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 hover:scale-[1.02] transition-all"
+          className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-white text-black font-bold rounded-lg hover:bg-zinc-200 hover:scale-[1.02] cursor-pointer transition-all"
         >
           <svg className="w-6 h-6" viewBox="0 0 24 24">
             <path

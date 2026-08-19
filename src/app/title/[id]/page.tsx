@@ -56,6 +56,7 @@ export default async function TitlePage(props: TitlePageProps) {
     .map(p => p.episodeId)
     
   const isTitleWatched = userProgress.some(p => p.status === 'COMPLETED' && !p.episodeId)
+  const titleProgress = userProgress.find(p => !p.episodeId)
 
   // Fetch all user reviews for this title
   const allReviews = await prisma.userProgress.findMany({
@@ -159,7 +160,7 @@ export default async function TitlePage(props: TitlePageProps) {
             </p>
 
             <div className="mt-8 flex items-center gap-4">
-              <TrackingActions titleId={title.id} isWatched={isTitleWatched} />
+              <TrackingActions titleId={title.id} isWatched={isTitleWatched} currentRating={titleProgress?.rating} currentReview={titleProgress?.review} />
               <TrailerModal trailerUrl={title.trailerUrl} />
             </div>
             
@@ -279,7 +280,7 @@ export default async function TitlePage(props: TitlePageProps) {
                   </div>
                   {review.review && (
                     <p className="text-zinc-300 italic text-sm border-l-2 border-white/10 pl-4 py-1">
-                      "{review.review}"
+                      &quot;{review.review}&quot;
                     </p>
                   )}
                 </div>
