@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { ChevronLeft } from 'lucide-react'
 import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { TrackingActions } from '@/components/tracking-actions'
 import { EpisodeWatchButton, SeasonWatchButton } from '@/components/episode-tracking'
@@ -22,8 +23,11 @@ interface TitlePageProps {
 export default async function TitlePage(props: TitlePageProps) {
   const params = await props.params;
   const session = await auth();
-  const user = session?.user
-  const userId = user?.id
+  if (!session?.user) {
+    redirect('/login')
+  }
+  const user = session.user
+  const userId = user.id!
 
   const title = await prisma.title.findUnique({
     where: { id: params.id },

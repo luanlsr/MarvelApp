@@ -1,12 +1,17 @@
 export const dynamic = 'force-dynamic';
 
 import { prisma } from '@/lib/prisma'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { ChevronLeft } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default async function CharactersPage() {
+  const session = await auth()
+  if (!session?.user) redirect('/login')
+
   const characters = await prisma.character.findMany({
     orderBy: { name: 'asc' }
   })

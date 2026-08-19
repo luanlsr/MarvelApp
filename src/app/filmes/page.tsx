@@ -1,12 +1,17 @@
 export const dynamic = 'force-dynamic';
 
 import { prisma } from '@/lib/prisma'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 import { StreamingCard } from '@/components/streaming-card'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Calendar, Clock } from 'lucide-react'
 
 export default async function FilmesPage({ searchParams }: { searchParams: Promise<{ sort?: string }> }) {
+  const session = await auth()
+  if (!session?.user) redirect('/login')
+  
   const resolvedParams = await searchParams
   const sort = resolvedParams?.sort === 'release' ? 'release' : 'timeline'
 

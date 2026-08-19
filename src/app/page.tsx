@@ -1,5 +1,7 @@
 import { TimelineGrid } from '@/components/timeline-grid'
 import { getMarathonProgress } from '@/app/actions/marathon'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { Play, Info, CheckCircle } from 'lucide-react'
@@ -7,6 +9,9 @@ import { ImageWithFallback } from '@/components/image-with-fallback'
 import { cn } from '@/lib/utils'
 
 export default async function Home() {
+  const session = await auth()
+  if (!session?.user) redirect('/login')
+
   const { nextRecommended } = await getMarathonProgress()
   
   // Use nextRecommended as the main hero if available, otherwise a default fallback
