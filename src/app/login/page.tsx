@@ -1,7 +1,6 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
-import Image from 'next/image'
 
 export default function LoginPage() {
   const handleGoogleLogin = async () => {
@@ -9,17 +8,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex-grow flex items-center justify-center min-h-[calc(100vh-80px)] bg-black relative overflow-hidden">
+    <div className="flex-grow flex items-center justify-center min-h-screen bg-black relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?q=80&w=2142&auto=format&fit=crop" // Marvel/Iron Man aesthetic placeholder
+        <img
+          src="https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg" // Avengers: Endgame Backdrop
           alt="Marvel Background"
-          fill
-          className="object-cover opacity-30"
-          priority
+          className="w-full h-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#040714] via-[#040714]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#040714] via-[#040714]/80 to-[#040714]/30" />
       </div>
 
       {/* Login Card */}

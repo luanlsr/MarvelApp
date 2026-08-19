@@ -16,9 +16,12 @@ const navItems = [
 
 import { signOut } from 'next-auth/react'
 
+import { usePathname } from 'next/navigation'
+
 export function Navbar({ user }: { user?: any }) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +30,10 @@ export function Navbar({ user }: { user?: any }) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  if (pathname === '/login') {
+    return null
+  }
 
   return (
     <nav className={cn(
